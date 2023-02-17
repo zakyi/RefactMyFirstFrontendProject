@@ -5,6 +5,7 @@
 //Test git diff
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //修改branch1
 //rebase 3
 //rebase 4
@@ -18,3 +19,7 @@
 //测试修改main
 >>>>>>> 2a980d2 (修改main)
 >>>>>>> bfb9445 (git rebase --continue)
+=======
+//修改main
+//rebase1
+>>>>>>> c5ad0e0 (main rebase1)
