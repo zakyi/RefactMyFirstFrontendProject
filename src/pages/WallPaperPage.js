@@ -2,7 +2,7 @@ import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
 import ImageList from "../components/ImageList";
 
-function MainPage() {
+function WallPaperPage() {
   return (
     <div>
       <Navigator />
@@ -12,4 +12,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default WallPaperPage;
