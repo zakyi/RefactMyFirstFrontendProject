@@ -1,4 +1,9 @@
 import Link from "./Link";
+
+/**
+ * 管理导航栏，以及展示导航栏的Link
+ * @returns
+ */
 function Header() {
   const links = [
     {
