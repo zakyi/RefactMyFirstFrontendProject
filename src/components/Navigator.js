@@ -7,16 +7,20 @@ import Link from "./Link";
 function Navigator() {
   const links = [
     {
-      label: "main",
-      path: "/",
-    },
-    {
       label: "WallPaper",
       path: "/wallpaper",
     },
     {
-      label: "Profile",
-      path: "/profile",
+      label: "Animation",
+      path: "/animation",
+    },
+    {
+      label: "Animal",
+      path: "/animal",
+    },
+    {
+      label: "Nature",
+      path: "/nature",
     },
   ];
 
@@ -24,7 +28,7 @@ function Navigator() {
     return <Link key={link.label} label={link.label} path={link.path} />;
   });
 
-  return <div>{content}</div>;
+  return <div className="navigator">{content}</div>;
 }
 
 export default Navigator;

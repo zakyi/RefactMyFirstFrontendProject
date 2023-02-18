@@ -54,6 +54,10 @@ body {
   line-height: 1.6;
 }
 
+div {
+  display: block;
+}
+
 li {
   list-style: none;
 }
@@ -96,7 +100,32 @@ a:active {
 
 .header {
   height: 3rem;
+  position: relative;
 }
+
+.header::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gray-7);
+  transform: scaleY(0.2);
+}
+
+/* 四边设置0.5px边距 */
+/* .header::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border: 1px solid red;
+  transform-origin: top left;
+  transform: scale(0.5);
+} */
 
 .nav {
   padding: 0.4rem 0.5rem;
@@ -108,6 +137,47 @@ a:active {
 .nav-logo {
   font-size: 1.7rem;
   display: flex;
+}
+
+.navigator {
+  display: flex;
+  height: 3rem;
+  align-items: flex-end;
+  justify-content: flex-start;
+  column-gap: var(--space-2);
+}
+
+.navigator a {
+  display: inline-block;
+  height: 2.25rem;
+}
+
+.banner-image-container {
+  position: relative;
+}
+
+.banner-image {
+  width: 100%;
+  height: 20rem;
+  object-fit: cover;
+}
+
+.overlay-banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+}
+
+.overlay-content {
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: var(--color-gray-0);
+  opacity: 100%;
 }
 
 button[type="primary"] {
