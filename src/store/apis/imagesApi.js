@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const imagesApi = createApi({
   reducerPath: "images",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.unsplash.com",
+    baseUrl: "http://localhost:3005",
   }),
   endpoints(builder) {
     return {
@@ -11,14 +11,12 @@ const imagesApi = createApi({
         query: (term) => {
           console.log(term);
           return {
-            url: "/search/photos",
-            headers: {
-              Authorization: "Client-ID ",
-            },
-            params: {
-              query: term,
-            },
+            url: `/search/${term}`,
             method: "GET",
+            // mode: "no-cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
           };
         },
       }),

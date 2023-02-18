@@ -1,5 +1,5 @@
 function ImageItem({ image }) {
-  return <img src={image.urls.small} alt={image.alt_description} />;
+  return <img src={image.path} />;
 }
 
 export default ImageItem;
