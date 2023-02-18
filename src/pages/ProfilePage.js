@@ -1,10 +1,10 @@
 import ImageList from "../components/ImageList";
-import Navigator from "../components/Navigator";
+import Profile from "../components/Profile";
 
 function ProfilePage() {
   return (
     <div>
-      <Navigator />
+      <Profile />
       <ImageList />
     </div>
   );
