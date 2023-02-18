@@ -1,9 +1,20 @@
 import ImageItem from "./ImageItem";
+import { useSelector } from "react-redux";
+import { useFetchImagesQuery } from "../store";
 
 function ImageList() {
-  const content = <ImageItem />;
+  const { searchTerm } = useSelector((state) => state.search);
+  const { data, error, isLoading } = useFetchImagesQuery(searchTerm);
 
-  return <div>{content}</div>;
+  if (!data) return;
+  console.log(data);
+  console.log(data.results);
+
+  const content = data.results.map((image) => {
+    return <ImageItem key={image.id} image={image} />;
+  });
+
+  return <div className="image-list">{content}</div>;
 }
 
 export default ImageList;

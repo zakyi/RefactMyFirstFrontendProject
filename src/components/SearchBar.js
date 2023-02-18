@@ -1,9 +1,14 @@
 import "../index.css";
 import { GoSearch } from "react-icons/go";
 import { useState, useEffect, useRef } from "react";
+import { setSearchTerm } from "../store";
+import { useDispatch } from "react-redux";
 
 function SearchBar() {
+  const dispatch = useDispatch();
+
   const [isActive, setIsActive] = useState(false);
+  const [term, setTerm] = useState("");
   const _input = useRef();
 
   useEffect(() => {
@@ -14,21 +19,35 @@ function SearchBar() {
     });
   }, []);
 
+  const handleChange = (e) => {
+    setTerm(e.target.value);
+  };
+
   const handleFocus = () => {
     setIsActive(true);
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(setSearchTerm(term));
   };
 
   return (
     <div>
-      <form className={`form ${isActive && "form-active"}`}>
-        <button onClick={handleClick}>
+      <form
+        onSubmit={handleSubmit}
+        className={`form ${isActive && "form-active"}`}
+      >
+        <button>
           <GoSearch />
         </button>
-        <input ref={_input} onFocus={handleFocus} placeholder="search"></input>
+        <input
+          value={term}
+          onChange={handleChange}
+          ref={_input}
+          onFocus={handleFocus}
+          placeholder="search"
+        ></input>
       </form>
     </div>
   );

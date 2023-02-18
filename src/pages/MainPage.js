@@ -1,6 +1,6 @@
 import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
-import ImageList from "../components/ImageList";
+import SearchResult from "../components/SearchResult";
 import HomeImage from "../assets/HomeImage.jpg";
 
 function MainPage() {
@@ -10,7 +10,7 @@ function MainPage() {
       <MainImage title="SuperSplash">
         <img className="banner-image" src={HomeImage} />
       </MainImage>
-      <ImageList />
+      <SearchResult />
     </div>
   );
 }
