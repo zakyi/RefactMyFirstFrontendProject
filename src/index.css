@@ -105,6 +105,11 @@ a:active {
   justify-content: space-between;
 }
 
+.nav-logo {
+  font-size: 1.7rem;
+  display: flex;
+}
+
 button[type="primary"] {
   border: none;
 }

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setCurrentPath } from "../store";
 
-function Link({ label, path }) {
+function Link({ label, path, classes }) {
   const dispatch = useDispatch();
 
   /**
@@ -20,7 +20,7 @@ function Link({ label, path }) {
   };
 
   return (
-    <a href={path} onClick={handleClick}>
+    <a href={path} onClick={handleClick} className={classes}>
       {label}
     </a>
   );
