@@ -1,25 +1,23 @@
+import SearchBar from "./SearchBar";
 import Link from "./Link";
+import { GoHome } from "react-icons/go";
+import { RxAvatar } from "react-icons/rx";
+
 function Header() {
-  const links = [
-    {
-      label: "main",
-      path: "/",
-    },
-    {
-      label: "WallPaper",
-      path: "/wallpaper",
-    },
-    {
-      label: "Profile",
-      path: "/profile",
-    },
-  ];
-
-  const content = links.map((link) => {
-    return <Link key={link.label} label={link.label} path={link.path} />;
-  });
-
-  return <div>{content}</div>;
+  return (
+    <header className="header">
+      <nav className="nav">
+        <Link classes="nav-logo" key="main" label={<GoHome />} path="/"></Link>
+        <SearchBar />
+        <Link
+          classes="nav-logo"
+          key="profile"
+          label={<RxAvatar />}
+          path="/profile"
+        ></Link>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;

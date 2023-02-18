@@ -1,5 +1,13 @@
-function Button() {
-  return <div>Button</div>;
+import "../index.css";
+
+function Button({ type, decoration, children }) {
+  return (
+    <div>
+      <button type={type} decoration={decoration}>
+        {children}
+      </button>
+    </div>
+  );
 }
 
 export default Button;
