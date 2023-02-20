@@ -9,7 +9,6 @@ const imagesApi = createApi({
     return {
       fetchImages: builder.query({
         query: (term) => {
-          console.log(term);
           return {
             url: `/search/${term}`,
             method: "GET",
@@ -25,6 +24,4 @@ const imagesApi = createApi({
 });
 
 export const { useFetchImagesQuery } = imagesApi;
-console.log(useFetchImagesQuery);
-console.log(imagesApi);
 export { imagesApi };
