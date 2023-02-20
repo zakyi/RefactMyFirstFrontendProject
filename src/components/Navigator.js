@@ -11,16 +11,16 @@ function Navigator() {
       path: "/wallpaper",
     },
     {
-      label: "Animation",
-      path: "/animation",
-    },
-    {
-      label: "Animal",
-      path: "/animal",
+      label: "Anime",
+      path: "/anime",
     },
     {
       label: "Nature",
       path: "/nature",
+    },
+    {
+      label: "Culture",
+      path: "/culture",
     },
   ];
 

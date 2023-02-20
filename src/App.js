@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import Route from "./components/Route";
 import ProfilePage from "./pages/ProfilePage";
 import WallPaperPage from "./pages/WallPaperPage";
+import AnimePage from "./pages/AnimePage";
+import CulturePage from "./pages/CulturePage";
+import NaturePage from "./pages/NaturePage";
 import Header from "./components/Header";
 import { useDispatch } from "react-redux";
 
@@ -40,6 +43,15 @@ function App() {
       </Route>
       <Route path="/wallpaper">
         <WallPaperPage />
+      </Route>
+      <Route path="/nature">
+        <NaturePage />
+      </Route>
+      <Route path="/anime">
+        <AnimePage />
+      </Route>
+      <Route path="/culture">
+        <CulturePage />
       </Route>
     </div>
   );

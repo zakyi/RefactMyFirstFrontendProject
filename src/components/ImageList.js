@@ -3,10 +3,15 @@ import "./ImageList.css";
 import { useSelector } from "react-redux";
 import { useFetchImagesQuery } from "../store";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSearchTerm } from "../store";
 
-function ImageList() {
+function ImageList({ term }) {
+  const dispatch = useDispatch();
   const { searchTerm } = useSelector((state) => state.search);
   const { data, error, isLoading } = useFetchImagesQuery(searchTerm);
+
+  if (term !== null) dispatch(setSearchTerm(term));
 
   let width = window.innerWidth;
 
@@ -16,15 +21,7 @@ function ImageList() {
 
   const handleChangeWidth = () => {
     width = window.innerWidth;
-    if (width < 746) {
-      setColumns(1);
-    } else if (width < 1024) {
-      setColumns(2);
-    } else if (width >= 1024) {
-      setColumns(3);
-    }
-    console.log(width);
-    console.log(columns);
+    setColumns(width < 746 ? 1 : width < 1024 ? 2 : width >= 1024 ? 3 : 4);
   };
 
   useEffect(() => {
