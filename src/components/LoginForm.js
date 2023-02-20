@@ -1,13 +1,25 @@
 import Button from "../components/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFetchUserMutation } from "../store";
+import Form from "./Form";
+import { useValidationHook } from "../hooks/useValidationHook";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [fetchUser, { data, error, isFetching }] = useFetchUserMutation();
+  const [fetchUser, fetchUserResults] = useFetchUserMutation();
+  const { verifyEmail, verifyPassword } = useValidationHook();
+  const [emailValid, setEmailValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
+
+  useEffect(() => {
+    console.log(fetchUserResults);
+    if (fetchUserResults.isSuccess) {
+    }
+  }, [fetchUserResults.isLoading]);
 
   const handleChangeEmail = (e) => {
+    console.log(email);
     setEmail(e.target.value);
   };
 
@@ -17,30 +29,30 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    fetchUser(email);
+    if (!verifyEmail(email)) {
+      setEmailValid(false);
+      return;
+    } else if (!verifyPassword(password)) {
+      setPasswordValid(false);
+      return;
+    } else {
+      setEmailValid(true);
+      setPasswordValid(true);
+      fetchUser(email);
+    }
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>Email</div>
-        <input
-          onChange={handleChangeEmail}
-          value={email}
-          className="login-input"
-          placeholder="Email"
-        />
-        <div>Password</div>
-        <input
-          onChange={handleChangePassword}
-          value={password}
-          className="login-input"
-          type="password"
-        />
-        <div>
-          <Button type="success"> Login </Button>
-        </div>
-      </form>
+      <Form
+        handleSubmit={handleSubmit}
+        handleEmailChange={handleChangeEmail}
+        handlePasswordChange={handleChangePassword}
+        email={email}
+        password={password}
+        formType="Login"
+        emailValid={emailValid}
+        passwordValid={passwordValid}
+      />
     </div>
   );
 }

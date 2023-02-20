@@ -333,3 +333,13 @@ button[decoration~="rounded"] {
   display: flex;
   justify-content: center;
 }
+
+.password-input:focus::after {
+  content: "限制8到20位数字、字母、_和.";
+}
+
+.invalid-message {
+  color: red;
+  max-width: calc(var(--width-1) * 0.5);
+  margin-top: -1rem;
+}

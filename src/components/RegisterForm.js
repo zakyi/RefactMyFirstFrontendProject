@@ -1,11 +1,16 @@
 import Button from "../components/Button";
+import Form from "./Form";
 import { useState, useEffect } from "react";
 import { useAddUserMutation } from "../store";
+import { useValidationHook } from "../hooks/useValidationHook";
 
 function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [addUser, addUserResults] = useAddUserMutation();
+  const { verifyEmail, verifyPassword } = useValidationHook();
+  const [emailValid, setEmailValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
 
   useEffect(() => {
     console.log(addUserResults);
@@ -21,29 +26,30 @@ function RegisterForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUser({ email, password });
+    if (!verifyEmail(email)) {
+      setEmailValid(false);
+      return;
+    } else if (!verifyPassword(password)) {
+      setPasswordValid(false);
+      return;
+    } else {
+      setEmailValid(true);
+      setPasswordValid(true);
+      addUser(email, password);
+    }
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>Email</div>
-        <input
-          onChange={handleChangeEmail}
-          value={email}
-          className="login-input"
-          placeholder="Email"
-        />
-        <div>Password</div>
-        <input
-          onChange={handleChangePassword}
-          value={password}
-          className="login-input"
-          type="password"
-        />
-        <div>
-          <Button type="success"> Register </Button>
-        </div>
-      </form>
+      <Form
+        handleSubmit={handleSubmit}
+        handleEmailChange={handleChangeEmail}
+        handlePasswordChange={handleChangePassword}
+        email={email}
+        password={password}
+        formType="Register"
+        emailValid={emailValid}
+        passwordValid={passwordValid}
+      />
     </div>
   );
 }
