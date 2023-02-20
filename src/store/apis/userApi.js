@@ -7,17 +7,23 @@ const userApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchUser: builder.query({
-        query: (userName) => {
-          return { method: "GET", url: `/users/${userName}` };
+      fetchUser: builder.mutation({
+        query: (email) => {
+          return {
+            method: "POST",
+            url: `users/loginUser`,
+            body: {
+              email,
+            },
+          };
         },
       }),
       addUser: builder.mutation({
-        query: (userName, password) => {
+        query: (data) => {
           return {
             method: "POST",
-            url: `/users/${userName}`,
-            body: { userName: userName, password: password },
+            url: `users/addUser`,
+            body: data,
           };
         },
       }),
@@ -25,5 +31,5 @@ const userApi = createApi({
   },
 });
 
-export const { useFetchUserQuery, useAddUserMutaion } = userApi;
+export const { useFetchUserMutation, useAddUserMutation } = userApi;
 export { userApi };

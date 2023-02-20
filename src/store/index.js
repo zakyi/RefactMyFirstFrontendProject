@@ -7,6 +7,7 @@ import { setSearchTerm } from "./slices/searchSlice";
 import { useFetchImagesQuery } from "./apis/imagesApi";
 import { usersReducer, setIsLoggedIn, setUserName } from "./slices/usersSlice";
 import { userApi } from "./apis/userApi";
+import { useAddUserMutation, useFetchUserMutation } from "./apis/userApi";
 
 const store = configureStore({
   reducer: {
@@ -26,4 +27,4 @@ const store = configureStore({
 setupListeners(store.dispatch);
 
 export { store, setCurrentPath, setSearchTerm, setIsLoggedIn, setUserName };
-export { useFetchImagesQuery };
+export { useFetchImagesQuery, useAddUserMutation, useFetchUserMutation };
