@@ -17,6 +17,6 @@
 }
 
 .image-overlay:hover {
-  opacity: 40%;
-  background-color: var(--color-gray-9);
+  opacity: 100%;
+  background-color: var(--color-gray-9-opacity-40);
 }

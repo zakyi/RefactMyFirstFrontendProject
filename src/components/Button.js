@@ -2,7 +2,7 @@ import "../index.css";
 
 function Button({ type, decoration, children }) {
   return (
-    <div>
+    <div className="button">
       <button type={type} decoration={decoration}>
         {children}
       </button>

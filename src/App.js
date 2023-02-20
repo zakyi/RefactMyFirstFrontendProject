@@ -7,6 +7,8 @@ import WallPaperPage from "./pages/WallPaperPage";
 import AnimePage from "./pages/AnimePage";
 import CulturePage from "./pages/CulturePage";
 import NaturePage from "./pages/NaturePage";
+import RegisterPage from "./pages/RegisterPage";
+import LogInPage from "./pages/LogInPage";
 import Header from "./components/Header";
 import { useDispatch } from "react-redux";
 
@@ -52,6 +54,12 @@ function App() {
       </Route>
       <Route path="/culture">
         <CulturePage />
+      </Route>
+      <Route path="/register">
+        <RegisterPage />
+      </Route>
+      <Route path="/login">
+        <LogInPage />
       </Route>
     </div>
   );

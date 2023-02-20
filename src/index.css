@@ -14,6 +14,7 @@
 }
 
 :root {
+  --color-gray-9-opacity-40: #21252966;
   --color-gray-9: #212529;
   --color-gray-8: #343a40;
   --color-gray-7: #495057;
@@ -113,6 +114,10 @@ a:hover {
 
 a:active {
   border-bottom: 2px solid var(--color-gray-9);
+}
+
+.button:hover a {
+  color: var(--color-gray-9);
 }
 
 .hide,
