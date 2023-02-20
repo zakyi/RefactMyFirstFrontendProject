@@ -1,0 +1,15 @@
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-column-gap: var(--column-gutter);
+}
+
+.image-list-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--row-gutter);
+}
+
+img {
+  width: 100%;
+}
