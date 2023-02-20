@@ -120,6 +120,10 @@ a:active {
   color: var(--color-gray-9);
 }
 
+.button a:active {
+  border: none;
+}
+
 .hide,
 .none {
   display: none;
