@@ -18,14 +18,27 @@ function useValidationHook() {
 
   const verifyPassword = (password) => {
     /**
-     * 8-20位字符、数字、_和.
+     * 8-20位字母、数字、_和.
      */
     const passwordRegx = /[a-zA-Z0-9_\.]{8,20}/;
     const OK = passwordRegx.exec(password);
     return OK;
   };
 
-  return { verifyEmail, verifyPassword };
+  const verifyRepeatPassword = (password, repeatPassword) => {
+    return password === repeatPassword;
+  };
+
+  const verifyUserName = (userName) => {
+    /**
+     * 1-10位字母、数字
+     */
+    const userNameRegx = /[a-zA-Z0-9]{1,10}/;
+    const OK = userNameRegx.exec(userName);
+    return OK;
+  };
+
+  return { verifyEmail, verifyPassword, verifyRepeatPassword, verifyUserName };
 }
 
 export { useValidationHook };

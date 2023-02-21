@@ -343,3 +343,11 @@ button[decoration~="rounded"] {
   max-width: calc(var(--width-1) * 0.5);
   margin-top: -1rem;
 }
+
+.inline--block {
+  display: inline-block;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
