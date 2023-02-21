@@ -22,8 +22,6 @@ function useValidationHook() {
      */
     const passwordRegx = /[a-zA-Z0-9_\.]{8,20}/;
     const OK = passwordRegx.exec(password);
-    console.log(password);
-    console.log(OK);
     return OK;
   };
 

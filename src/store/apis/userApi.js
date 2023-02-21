@@ -8,13 +8,11 @@ const userApi = createApi({
   endpoints(builder) {
     return {
       fetchUser: builder.mutation({
-        query: (email) => {
+        query: (data) => {
           return {
             method: "POST",
             url: `users/loginUser`,
-            body: {
-              email,
-            },
+            body: data,
           };
         },
       }),

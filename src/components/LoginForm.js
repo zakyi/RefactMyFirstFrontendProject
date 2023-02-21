@@ -1,4 +1,3 @@
-import Button from "../components/Button";
 import { useState, useEffect } from "react";
 import { useFetchUserMutation } from "../store";
 import Form from "./Form";
@@ -11,12 +10,20 @@ function LoginForm() {
   const { verifyEmail, verifyPassword } = useValidationHook();
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     console.log(fetchUserResults);
     if (fetchUserResults.isSuccess) {
+      console.log(fetchUserResults.data.message);
+      setMessage(fetchUserResults.data.message);
+    } else if (fetchUserResults.isError) {
+      setMessage(fetchUserResults.error.data.error);
+    } else if (fetchUserResults.isLoading) {
+      setMessage("loading...");
     }
-  }, [fetchUserResults.isLoading]);
+    console.log(message);
+  }, [fetchUserResults.status]);
 
   const handleChangeEmail = (e) => {
     console.log(email);
@@ -38,7 +45,7 @@ function LoginForm() {
     } else {
       setEmailValid(true);
       setPasswordValid(true);
-      fetchUser(email);
+      fetchUser({ email, password });
     }
   };
   return (
@@ -52,6 +59,7 @@ function LoginForm() {
         formType="Login"
         emailValid={emailValid}
         passwordValid={passwordValid}
+        message={message}
       />
     </div>
   );

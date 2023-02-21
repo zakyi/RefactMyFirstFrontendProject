@@ -9,7 +9,9 @@ function Form({
   formType,
   emailValid,
   passwordValid,
+  message,
 }) {
+  console.log(message);
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -37,6 +39,9 @@ function Form({
             <p>Password must be 8 to 20 digit number, letter, _ or .</p>
           </div>
         )}
+        <div className="invalid-message">
+          <p>{message}</p>{" "}
+        </div>
         <div>
           <Button type="success"> {formType} </Button>
         </div>
