@@ -5,15 +5,24 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { searchReducer } from "./slices/searchSlice";
 import { setSearchTerm } from "./slices/searchSlice";
 import { useFetchImagesQuery } from "./apis/imagesApi";
-import { usersReducer, setIsLoggedIn, setUserName } from "./slices/usersSlice";
+import {
+  userDataReducer,
+  setIsLoggedIn,
+  setUserData,
+  getUserData,
+} from "./slices/userDataSlice";
 import { userApi } from "./apis/userApi";
-import { useAddUserMutation, useFetchUserMutation } from "./apis/userApi";
+import {
+  useAddUserMutation,
+  useFetchUserMutation,
+  useVerifyUserMutation,
+} from "./apis/userApi";
 
 const store = configureStore({
   reducer: {
     page: pageReducer,
     search: searchReducer,
-    users: usersReducer,
+    userData: userDataReducer,
     [imagesApi.reducerPath]: imagesApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
   },
@@ -26,5 +35,17 @@ const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { store, setCurrentPath, setSearchTerm, setIsLoggedIn, setUserName };
-export { useFetchImagesQuery, useAddUserMutation, useFetchUserMutation };
+export {
+  store,
+  setCurrentPath,
+  setSearchTerm,
+  setIsLoggedIn,
+  setUserData,
+  getUserData,
+};
+export {
+  useFetchImagesQuery,
+  useAddUserMutation,
+  useFetchUserMutation,
+  useVerifyUserMutation,
+};

@@ -1,6 +1,6 @@
 import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
-import ImageList from "../components/ImageList";
+import SearchResult from "../components/SearchResult";
 import CulturePageBanner from "../assets/CulturePageBanner.jpg";
 
 function CulturePage() {
@@ -10,7 +10,7 @@ function CulturePage() {
       <MainImage title="Culture">
         <img className="banner-image" src={CulturePageBanner} />
       </MainImage>
-      <ImageList term="culture" />
+      <SearchResult />
     </div>
   );
 }

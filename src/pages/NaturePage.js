@@ -1,6 +1,6 @@
 import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
-import ImageList from "../components/ImageList";
+import SearchResult from "../components/SearchResult";
 import NaturePageBanner from "../assets/NaturePageBanner.jpg";
 
 function NaturePage() {
@@ -10,7 +10,7 @@ function NaturePage() {
       <MainImage title="Nature">
         <img className="banner-image" src={NaturePageBanner} />
       </MainImage>
-      <ImageList term="nature" />
+      <SearchResult />
     </div>
   );
 }

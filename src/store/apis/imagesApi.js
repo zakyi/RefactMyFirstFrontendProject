@@ -8,7 +8,7 @@ const imagesApi = createApi({
   endpoints(builder) {
     return {
       fetchImages: builder.query({
-        query: (term) => {
+        query: (term, token) => {
           return {
             url: `/search/${term}`,
             method: "GET",

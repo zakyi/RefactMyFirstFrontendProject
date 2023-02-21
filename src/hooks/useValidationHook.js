@@ -1,6 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useVerifyUserMutation } from "../store";
 
 function useValidationHook() {
+  const [verifyUser, verifyUserResults] = useVerifyUserMutation();
+  const [verifyResult, setVerifyResult] = useState(false);
+
+  useEffect(() => {
+    if (verifyUserResults.isSuccess) {
+      setVerifyResult(true);
+    } else if (verifyUserResults.isError) {
+      setVerifyResult(false);
+    }
+  }, [verifyUserResults.states]);
+
+  const verifyUserToken = (token, type) => {
+    verifyUser({ token, type });
+  };
+
   const verifyEmail = (email) => {
     /**
      * zhyi.feynman@gmail.com
@@ -38,7 +55,14 @@ function useValidationHook() {
     return OK;
   };
 
-  return { verifyEmail, verifyPassword, verifyRepeatPassword, verifyUserName };
+  return {
+    verifyEmail,
+    verifyPassword,
+    verifyRepeatPassword,
+    verifyUserName,
+    verifyUserToken,
+    verifyResult,
+  };
 }
 
 export { useValidationHook };

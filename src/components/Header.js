@@ -5,7 +5,7 @@ import { RxAvatar } from "react-icons/rx";
 import { useSelector } from "react-redux";
 
 function Header() {
-  const { isLoggedIn } = useSelector((state) => state.users);
+  const { isLoggedIn } = useSelector((state) => state.userData);
 
   return (
     <header className="header">

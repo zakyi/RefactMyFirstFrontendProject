@@ -17,20 +17,23 @@ function Form({
   repeatPasswordValid,
   message,
 }) {
-  console.log(message);
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div>User Name</div>
-        <input
-          onChange={handleUserNameChange}
-          value={userName}
-          className="login-input password-input"
-          placeholder="User Name"
-        />
-        {!userNameValid && (
-          <div className="invalid-message">
-            <p>Invalid user name</p>
+        {formType === "Register" && (
+          <div>
+            <div>User Name</div>
+            <input
+              onChange={handleUserNameChange}
+              value={userName}
+              className="login-input password-input"
+              placeholder="User Name"
+            />
+            {!userNameValid && (
+              <div className="invalid-message">
+                <p>Invalid user name</p>
+              </div>
+            )}
           </div>
         )}
         <div>Email</div>

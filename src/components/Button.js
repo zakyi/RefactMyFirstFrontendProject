@@ -1,8 +1,8 @@
 import "../index.css";
 
-function Button({ type, decoration, children }) {
+function Button({ type, decoration, children, handleClick }) {
   return (
-    <div className="button">
+    <div onClick={handleClick} className="button">
       <button type={type} decoration={decoration}>
         {children}
       </button>

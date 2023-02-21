@@ -4,14 +4,11 @@ import { useSelector } from "react-redux";
 import { useFetchImagesQuery } from "../store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchTerm } from "../store";
 
-function ImageList({ term }) {
-  const dispatch = useDispatch();
+function ImageList() {
   const { searchTerm } = useSelector((state) => state.search);
+  console.log(searchTerm);
   const { data, error, isLoading } = useFetchImagesQuery(searchTerm);
-
-  if (term !== null) dispatch(setSearchTerm(term));
 
   let width = window.innerWidth;
 
@@ -39,12 +36,6 @@ function ImageList({ term }) {
     const deleteCount = parseInt(results.length / (columns - i));
     content.push(results.splice(0, deleteCount));
   }
-
-  //TODO: 将content映射成<div className="image-list-column"> {} </div>
-  // const contents = content[0].map((image, index) => {
-  //   return <ImageItem key={image.id} image={image} />;
-  // });
-  // console.log(contents);
 
   const contents = content.map((list, index) => {
     return (

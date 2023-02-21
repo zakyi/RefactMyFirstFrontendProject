@@ -25,9 +25,26 @@ const userApi = createApi({
           };
         },
       }),
+      verifyUser: builder.mutation({
+        query: ({ token, ...data }) => {
+          console.log(data);
+          return {
+            method: "POST",
+            url: `users/verifyUser`,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: data,
+          };
+        },
+      }),
     };
   },
 });
 
-export const { useFetchUserMutation, useAddUserMutation } = userApi;
+export const {
+  useFetchUserMutation,
+  useAddUserMutation,
+  useVerifyUserMutation,
+} = userApi;
 export { userApi };

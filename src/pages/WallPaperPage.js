@@ -1,6 +1,6 @@
 import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
-import ImageList from "../components/ImageList";
+import SearchResult from "../components/SearchResult";
 import WallPaperPageBanner from "../assets/WallPaperPageBanner.jpg";
 
 function WallPaperPage() {
@@ -10,7 +10,7 @@ function WallPaperPage() {
       <MainImage title="WallPaper">
         <img className="banner-image" src={WallPaperPageBanner} />
       </MainImage>
-      <ImageList term="wallpaper" />
+      <SearchResult />
     </div>
   );
 }

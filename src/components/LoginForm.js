@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useFetchUserMutation } from "../store";
 import Form from "./Form";
 import { useValidationHook } from "../hooks/useValidationHook";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserData, setIsLoggedIn, getUserData } from "../store";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -11,22 +13,25 @@ function LoginForm() {
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
   const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userData);
 
   useEffect(() => {
     console.log(fetchUserResults);
     if (fetchUserResults.isSuccess) {
-      console.log(fetchUserResults.data.message);
       setMessage(fetchUserResults.data.message);
+      dispatch(setUserData(fetchUserResults.data));
+      dispatch(setIsLoggedIn(true));
+      getUserData();
+      window.localStorage.setItem("userData", userData.token);
     } else if (fetchUserResults.isError) {
       setMessage(fetchUserResults.error.data.error);
     } else if (fetchUserResults.isLoading) {
       setMessage("loading...");
     }
-    console.log(message);
   }, [fetchUserResults.status]);
 
   const handleChangeEmail = (e) => {
-    console.log(email);
     setEmail(e.target.value);
   };
 
