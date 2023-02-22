@@ -2,8 +2,8 @@ import { setCurrentPath, pageReducer } from "./slices/pageSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { imagesApi } from "./apis/imagesApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { searchReducer } from "./slices/searchSlice";
-import { setSearchTerm } from "./slices/searchSlice";
+import { searchReducer, setSearchTerm } from "./slices/searchSlice";
+import { setModalVisible, modalReducer } from "./slices/modalSlice";
 import { useFetchImagesQuery } from "./apis/imagesApi";
 import {
   userDataReducer,
@@ -24,6 +24,7 @@ const store = configureStore({
     page: pageReducer,
     search: searchReducer,
     userData: userDataReducer,
+    modal: modalReducer,
     [imagesApi.reducerPath]: imagesApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
   },
@@ -43,6 +44,7 @@ export {
   setIsLoggedIn,
   setUserData,
   getUserData,
+  setModalVisible,
 };
 export {
   useFetchImagesQuery,

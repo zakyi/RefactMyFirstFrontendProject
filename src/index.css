@@ -19,6 +19,7 @@
   --color-gray-8: #343a40;
   --color-gray-7: #495057;
   --color-gray-6: #868e96;
+  --color-gray-5-opacity-60: #adb5bdaa;
   --color-gray-5: #adb5bd;
   --color-gray-4: #ced4da;
   --color-gray-3: #dee2e6;
@@ -358,4 +359,28 @@ button[decoration~="rounded"] {
 
 .added {
   color: #ffd43b;
+}
+
+.modal-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-gray-5-opacity-60);
+}
+.modal-background:hover {
+  cursor: zoom-out;
+}
+
+.modal-content {
+  position: absolute;
+  top: 1rem;
+  left: 70px;
+  right: 70px;
+  bottom: 100px;
+  padding: 5rem;
+  background-color: var(--color-gray-0);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--color-gray-8);
 }

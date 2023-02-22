@@ -1,7 +1,7 @@
 import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
 import AnimePageBanner from "../assets/AnimePageBanner.jpg";
-import SearchResult from "../components/SearchResult";
+import ImageList from "../components/ImageList";
 
 function AnimePage() {
   return (
@@ -10,7 +10,7 @@ function AnimePage() {
       <MainImage title="Anime">
         <img className="banner-image" src={AnimePageBanner} />
       </MainImage>
-      <SearchResult />
+      <ImageList key="animePage" term="anime" />
     </div>
   );
 }

@@ -19,6 +19,7 @@
 .image-overlay:hover {
   opacity: 100%;
   background-color: var(--color-gray-9-opacity-40);
+  cursor: zoom-in;
 }
 
 .login-link {

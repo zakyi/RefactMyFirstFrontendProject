@@ -1,6 +1,6 @@
 import MainPage from "./pages/MainPage";
 import { setCurrentPath } from "./store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Route from "./components/Route";
 import ProfilePage from "./pages/ProfilePage";
 import WallPaperPage from "./pages/WallPaperPage";
@@ -10,7 +10,9 @@ import NaturePage from "./pages/NaturePage";
 import RegisterPage from "./pages/RegisterPage";
 import LogInPage from "./pages/LogInPage";
 import Header from "./components/Header";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Modal from "./components/Modal";
+import { setModalVisible } from "./store";
 
 /*
  *
@@ -33,6 +35,15 @@ function App() {
     window.addEventListener("popstate", handler);
     return () => window.removeEventListener("popstate", handler);
   }, []);
+
+  /**
+   * Modal 相关
+   */
+  const { modalVisible } = useSelector((state) => state.modal);
+  console.log(modalVisible);
+  const onClose = () => {
+    dispatch(setModalVisible(false));
+  };
 
   return (
     <div className="App">
@@ -61,6 +72,7 @@ function App() {
       <Route path="/login">
         <LogInPage />
       </Route>
+      {modalVisible && <Modal onClose={onClose} />}
     </div>
   );
 }
