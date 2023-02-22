@@ -12,7 +12,7 @@ function useValidationHook() {
     } else if (verifyUserResults.isError) {
       setVerifyResult(false);
     }
-  }, [verifyUserResults.states]);
+  }, [verifyUserResults.isLoading]);
 
   const verifyUserToken = (token, type) => {
     verifyUser({ token, type });
@@ -62,6 +62,7 @@ function useValidationHook() {
     verifyUserName,
     verifyUserToken,
     verifyResult,
+    setVerifyResult,
   };
 }
 

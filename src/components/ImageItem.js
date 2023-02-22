@@ -3,28 +3,36 @@ import Button from "./Button";
 import { useSelector } from "react-redux";
 import Link from "./Link";
 import { useValidationHook } from "../hooks/useValidationHook";
+import { useState, useEffect } from "react";
 
 function ImageItem({ image }) {
   const handleOnMouseOver = () => {};
   const { isLoggedIn, token } = useSelector((state) => state.userData);
-  const { verifyUserToken, verifyResult } = useValidationHook();
+  const { verifyUserToken, verifyResult, setVerifyResult } =
+    useValidationHook();
+  const [type, setType] = useState("");
+
+  useEffect(() => {
+    if (verifyResult === true && type === "like") {
+      console.log("Send like post");
+    }
+    if (verifyResult === true && type === "add") {
+      console.log("Send add post");
+    }
+
+    return () => setVerifyResult(false);
+  }, [verifyResult]);
 
   const handleLike = () => {
     if (!isLoggedIn) return;
+    setType("like");
     verifyUserToken(token, "like");
-    //TODO
-    if (verifyResult === true) {
-    } else {
-    }
   };
 
   const handleAdd = () => {
     if (!isLoggedIn) return;
+    setType("add");
     verifyUserToken(token, "add");
-    //TODO
-    if (verifyResult === true) {
-    } else {
-    }
   };
 
   return (
