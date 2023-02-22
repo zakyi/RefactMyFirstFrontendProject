@@ -38,6 +38,22 @@ const userApi = createApi({
           };
         },
       }),
+      userAction: builder.mutation({
+        query: ({ imageId, userEmail, type, token }) => {
+          return {
+            url: "/userAction",
+            method: "post",
+            body: {
+              imageId,
+              userEmail,
+              type,
+            },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+        },
+      }),
     };
   },
 });
@@ -46,5 +62,6 @@ export const {
   useFetchUserMutation,
   useAddUserMutation,
   useVerifyUserMutation,
+  useUserActionMutation,
 } = userApi;
 export { userApi };

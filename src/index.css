@@ -351,3 +351,11 @@ button[decoration~="rounded"] {
 .mb-1 {
   margin-bottom: 1rem;
 }
+
+.liked {
+  color: #e03131;
+}
+
+.added {
+  color: #ffd43b;
+}

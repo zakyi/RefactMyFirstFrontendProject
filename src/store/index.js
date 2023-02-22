@@ -16,6 +16,7 @@ import {
   useAddUserMutation,
   useFetchUserMutation,
   useVerifyUserMutation,
+  useUserActionMutation,
 } from "./apis/userApi";
 
 const store = configureStore({
@@ -48,4 +49,5 @@ export {
   useAddUserMutation,
   useFetchUserMutation,
   useVerifyUserMutation,
+  useUserActionMutation,
 };

@@ -19,10 +19,10 @@ function LoginForm() {
   useEffect(() => {
     console.log(fetchUserResults);
     if (fetchUserResults.isSuccess) {
-      setMessage(fetchUserResults.data.message);
+      setMessage("Login success, enjoy!");
       dispatch(setUserData(fetchUserResults.data));
       dispatch(setIsLoggedIn(true));
-      getUserData();
+      dispatch(getUserData());
       window.localStorage.setItem("userData", userData.token);
     } else if (fetchUserResults.isError) {
       setMessage(fetchUserResults.error.data.error);

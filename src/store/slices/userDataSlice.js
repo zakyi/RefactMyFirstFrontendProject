@@ -15,11 +15,11 @@ const userDataSlice = createSlice({
       state.isLoggedIn = action.payload;
     },
     setUserData(state, action) {
-      const userData = action.payload.user;
+      const userData = action.payload;
       state.userName = userData.userName;
       state.email = userData.email;
-      state.likes = userData.likes;
-      state.collections = userData.collections;
+      state.likes = [...userData.likes];
+      state.collections = [...userData.collections];
       state.token = userData.token;
     },
     getUserData(state) {

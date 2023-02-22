@@ -2,54 +2,33 @@ import "./ImageItem.css";
 import Button from "./Button";
 import { useSelector } from "react-redux";
 import Link from "./Link";
-import { useValidationHook } from "../hooks/useValidationHook";
-import { useState, useEffect } from "react";
 
-function ImageItem({ image }) {
-  const handleOnMouseOver = () => {};
-  const { isLoggedIn, token } = useSelector((state) => state.userData);
-  const { verifyUserToken, verifyResult, setVerifyResult } =
-    useValidationHook();
-  const [type, setType] = useState("");
+function ImageItem({ image, handleLike, handleAdd, likes, collections }) {
+  const { isLoggedIn } = useSelector((state) => state.userData);
 
-  useEffect(() => {
-    if (verifyResult === true && type === "like") {
-      console.log("Send like post");
-    }
-    if (verifyResult === true && type === "add") {
-      console.log("Send add post");
-    }
-
-    return () => setVerifyResult(false);
-  }, [verifyResult]);
-
-  const handleLike = () => {
-    if (!isLoggedIn) return;
-    setType("like");
-    verifyUserToken(token, "like");
+  const checkLiked = () => {
+    return likes.includes(image.id) ? "liked" : "";
   };
 
-  const handleAdd = () => {
-    if (!isLoggedIn) return;
-    setType("add");
-    verifyUserToken(token, "add");
+  const checkAdded = () => {
+    return collections.includes(image.id) ? "added" : "";
   };
 
   return (
     <div className="image-container">
-      <img className="image" onMouseOver={handleOnMouseOver} src={image.path} />
+      <img data-image-id={image.id} className="image" src={image.path} />
 
       <div className="image-overlay">
         <Button handleClick={handleLike} type="secondary" decoration="rounded">
           {isLoggedIn ? (
-            "❤ Like"
+            <p className={checkLiked()}>❤ Like</p>
           ) : (
             <Link classes="login-link" label="❤ Like" path="/login" />
           )}
         </Button>
         <Button handleClick={handleAdd} type="secondary" decoration="rounded">
           {isLoggedIn ? (
-            "+ Add"
+            <p className={checkAdded()}>+ Add</p>
           ) : (
             <Link classes="login-link" label="+ Add" path="/login" />
           )}
