@@ -362,11 +362,11 @@ button[decoration~="rounded"] {
 }
 
 .modal-background {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 100%;
   background-color: var(--color-gray-5-opacity-60);
 }
 .modal-background:hover {
@@ -378,7 +378,7 @@ button[decoration~="rounded"] {
   top: 1rem;
   left: 70px;
   right: 70px;
-  bottom: 100px;
+  /* bottom: 100px; */
   padding: 5rem;
   background-color: var(--color-gray-0);
   border-radius: 5px;

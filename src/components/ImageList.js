@@ -1,7 +1,7 @@
 import ImageItem from "./ImageItem";
 import "./ImageList.css";
 import { useSelector } from "react-redux";
-import { setSearchTerm, useFetchImagesQuery } from "../store";
+import { setModalContent, setSearchTerm, useFetchImagesQuery } from "../store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useUserActionMutation } from "../store";
@@ -99,8 +99,25 @@ function ImageList({ term }) {
   /**
    * Modal相关
    */
-  const onOpenModal = () => {
+  const onOpenModal = (e) => {
     dispatch(setModalVisible(true));
+    const { imageId, imagePath } = e.target
+      .closest(".image-container")
+      .querySelector(".image").dataset;
+    const content = (
+      <div>
+        <ImageItem
+          handleLike={handleLike}
+          handleAdd={handleAdd}
+          key={imageId}
+          image={{ id: imageId, path: imagePath }}
+          likes={likes}
+          collections={collections}
+          onOpenModal={onOpenModal}
+        />
+      </div>
+    );
+    dispatch(setModalContent(content));
   };
 
   const contents = content.map((list, index) => {

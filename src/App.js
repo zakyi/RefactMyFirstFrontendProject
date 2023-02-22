@@ -39,7 +39,7 @@ function App() {
   /**
    * Modal 相关
    */
-  const { modalVisible } = useSelector((state) => state.modal);
+  const { modalVisible, modalContent } = useSelector((state) => state.modal);
   console.log(modalVisible);
   const onClose = () => {
     dispatch(setModalVisible(false));
@@ -72,7 +72,7 @@ function App() {
       <Route path="/login">
         <LogInPage />
       </Route>
-      {modalVisible && <Modal onClose={onClose} />}
+      {modalVisible && <Modal onClose={onClose}>{modalContent}</Modal>}
     </div>
   );
 }

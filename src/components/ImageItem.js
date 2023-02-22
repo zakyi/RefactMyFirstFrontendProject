@@ -2,7 +2,6 @@ import "./ImageItem.css";
 import Button from "./Button";
 import { useSelector } from "react-redux";
 import Link from "./Link";
-import { ROOT_URL } from "../static/config";
 
 function ImageItem({
   image,
@@ -26,6 +25,7 @@ function ImageItem({
     <div className="image-container">
       <img
         data-image-id={image.id}
+        data-image-path={image.path}
         className="image"
         src={image.path}
         alt="img"

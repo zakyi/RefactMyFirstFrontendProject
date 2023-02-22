@@ -3,7 +3,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import { imagesApi } from "./apis/imagesApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { searchReducer, setSearchTerm } from "./slices/searchSlice";
-import { setModalVisible, modalReducer } from "./slices/modalSlice";
+import {
+  setModalVisible,
+  setModalContent,
+  modalReducer,
+} from "./slices/modalSlice";
 import { useFetchImagesQuery } from "./apis/imagesApi";
 import {
   userDataReducer,
@@ -45,6 +49,7 @@ export {
   setUserData,
   getUserData,
   setModalVisible,
+  setModalContent,
 };
 export {
   useFetchImagesQuery,
