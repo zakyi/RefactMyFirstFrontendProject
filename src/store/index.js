@@ -2,7 +2,13 @@ import { setCurrentPath, pageReducer } from "./slices/pageSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { imagesApi } from "./apis/imagesApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { searchReducer, setSearchTerm } from "./slices/searchSlice";
+import {
+  searchReducer,
+  setSearchTerm,
+  setSearchResult,
+  setSearchTimeout,
+  getSearchState,
+} from "./slices/searchSlice";
 import {
   setModalVisible,
   setModalContent,
@@ -50,6 +56,9 @@ export {
   getUserData,
   setModalVisible,
   setModalContent,
+  setSearchResult,
+  setSearchTimeout,
+  getSearchState,
 };
 export {
   useFetchImagesQuery,

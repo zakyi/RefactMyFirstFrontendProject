@@ -122,7 +122,7 @@ function ImageList({ term }) {
 
   const contents = content.map((list, index) => {
     return (
-      <div className="image-list-column">
+      <div className="image-list-column" key={`image-list-column-${index}}`}>
         {list.map((image) => {
           return (
             <ImageItem

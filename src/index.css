@@ -263,12 +263,36 @@ button[decoration~="rounded"] {
 }
 
 .form {
-  display: flex;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
   width: 20rem;
   height: 2rem;
   background-color: var(--color-gray-2);
   border-radius: 1000px;
+}
+
+.hint-container {
+  width: 100%;
+  z-index: 1;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background-color: var(--color-gray-0);
+  border-radius: 5px;
+  border: 1px solid var(--color-gray-5);
+  gap: 0.5rem;
+}
+
+.hint-item {
+  background-color: inherit;
+  border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hint-item:hover {
+  cursor: pointer;
 }
 
 .form input {
@@ -383,4 +407,8 @@ button[decoration~="rounded"] {
   background-color: var(--color-gray-0);
   border-radius: 5px;
   box-shadow: 0 0 5px var(--color-gray-8);
+}
+
+.search-bar-content {
+  display: flex;
 }

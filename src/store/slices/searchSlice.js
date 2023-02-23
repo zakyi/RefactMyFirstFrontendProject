@@ -6,17 +6,29 @@ const searchSlice = createSlice({
     searchTerm: "",
     searchResult: {},
     searchTrigger: false,
+    searchTimeout: 0,
   },
   reducers: {
     setSearchTerm(state, action) {
       state.searchTerm = action.payload;
       state.searchTrigger = true;
     },
-    setSerchResult(state, action) {
+    setSearchResult(state, action) {
       state.searchResult = action.payload;
+    },
+    setSearchTimeout(state, action) {
+      state.searchTimeout = action.payload;
+    },
+    getSearchState(state) {
+      return state;
     },
   },
 });
 
-export const { setSearchTerm } = searchSlice.actions;
+export const {
+  setSearchTerm,
+  setSearchResult,
+  setSearchTimeout,
+  getSearchState,
+} = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;
