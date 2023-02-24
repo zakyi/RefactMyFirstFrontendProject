@@ -8,6 +8,7 @@ const modalSlice = createSlice({
     modalImagePath: "",
     modalImageHeight: "",
     modalImageWidth: "",
+    modalImageLikeCount: 0,
   },
   reducers: {
     setModalVisible(state, action) {
@@ -19,6 +20,7 @@ const modalSlice = createSlice({
       state.modalImagePath = action.payload.imagePath;
       state.modalImageHeight = action.payload.imageHeight;
       state.modalImageWidth = action.payload.imageWidth;
+      state.modalImageLikeCount = action.payload.imagelikeCount;
     },
     getModalContent(state) {
       return state;

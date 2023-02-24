@@ -38,6 +38,7 @@
 }
 
 .image:hover + .buttons-container,
+.image:hover ~ .likes-container,
 .buttons-container:hover {
   display: flex;
 }
@@ -48,4 +49,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.relative .likes-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: none;
+}
+
+.image:hover ~ .likes-container {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.likes-container-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Link from "./Link";
 import { useState, useRef } from "react";
 import { useHelperHook } from "../hooks/useHelperHook";
+import { AiOutlineHeart } from "react-icons/ai";
 
 function ImageItem({
   image,
@@ -47,6 +48,7 @@ function ImageItem({
               data-image-path={image.path}
               data-image-width={image.width}
               data-image-height={image.height}
+              data-image-likeCount={image.likeCount}
               className="image"
               src={image.path}
               alt="img"
@@ -75,6 +77,12 @@ function ImageItem({
                   <Link classes="login-link" label="+ Add" path="/login" />
                 )}
               </Button>
+            </div>
+            <div className="likes-container">
+              <div className="likes-container-avatar">
+                <AiOutlineHeart />
+              </div>
+              <div className="likes-container-number"> {image.likeCount}</div>
             </div>
           </div>
         </div>
