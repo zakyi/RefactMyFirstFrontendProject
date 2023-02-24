@@ -12,6 +12,7 @@ import LogInPage from "./pages/LogInPage";
 import Header from "./components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "./components/Modal";
+import CommentArea from "./components/CommentArea";
 import ImageItem from "./components/ImageItem";
 import { setModalVisible } from "./store";
 import { useImageHook } from "./hooks/useImageHook";
@@ -84,19 +85,22 @@ function App() {
       </Route>
       {modalVisible && (
         <Modal onClose={onClose}>
-          <ImageItem
-            handleLike={handleLike}
-            handleAdd={handleAdd}
-            key={modalImageId}
-            image={{
-              id: modalImageId,
-              path: modalImagePath,
-              width: modalImageWidth,
-              height: modalImageHeight,
-            }}
-            likes={likes}
-            collections={collections}
-          />
+          <div className="inner-modal">
+            <ImageItem
+              handleLike={handleLike}
+              handleAdd={handleAdd}
+              key={modalImageId}
+              image={{
+                id: modalImageId,
+                path: modalImagePath,
+                width: modalImageWidth,
+                height: modalImageHeight,
+              }}
+              likes={likes}
+              collections={collections}
+            />
+            <CommentArea imageId={modalImageId} />
+          </div>
         </Modal>
       )}
     </div>

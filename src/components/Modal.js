@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
 import "./Modal.css";
+import CommentArea from "./CommentArea";
 
 function Modal({ onClose, children }) {
   useEffect(() => {
@@ -10,6 +11,7 @@ function Modal({ onClose, children }) {
       document.body.classList.remove("overflow-hidden");
     };
   }, []);
+
   return ReactDOM.createPortal(
     <div>
       <div onClick={onClose} className="modal-background"></div>

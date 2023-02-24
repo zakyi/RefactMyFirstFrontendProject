@@ -9,7 +9,7 @@ const imagesApi = createApi({
   endpoints(builder) {
     return {
       fetchImages: builder.query({
-        query: (term, token) => {
+        query: (term) => {
           return {
             url: `/search/${term}`,
             method: "GET",
@@ -20,9 +20,42 @@ const imagesApi = createApi({
           };
         },
       }),
+      fetchImageComments: builder.mutation({
+        query: ({ imageId }) => {
+          return {
+            url: `/images/comments`,
+            method: "POST",
+            body: {
+              imageId,
+              type: "get",
+            },
+          };
+        },
+      }),
+      sendImageComment: builder.mutation({
+        query: ({ userId, imageId, comment, token }) => {
+          return {
+            url: `/images/comments`,
+            method: "POST",
+            body: {
+              imageId,
+              userId,
+              comment,
+              type: "comment",
+            },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+        },
+      }),
     };
   },
 });
 
-export const { useFetchImagesQuery } = imagesApi;
+export const {
+  useFetchImagesQuery,
+  useFetchImageCommentsMutation,
+  useSendImageCommentMutation,
+} = imagesApi;
 export { imagesApi };

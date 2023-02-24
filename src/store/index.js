@@ -15,7 +15,11 @@ import {
   getModalContent,
   modalReducer,
 } from "./slices/modalSlice";
-import { useFetchImagesQuery } from "./apis/imagesApi";
+import {
+  useFetchImagesQuery,
+  useFetchImageCommentsMutation,
+  useSendImageCommentMutation,
+} from "./apis/imagesApi";
 import {
   userDataReducer,
   setIsLoggedIn,
@@ -68,4 +72,6 @@ export {
   useFetchUserMutation,
   useVerifyUserMutation,
   useUserActionMutation,
+  useFetchImageCommentsMutation,
+  useSendImageCommentMutation,
 };

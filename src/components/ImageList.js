@@ -1,12 +1,16 @@
 import ImageItem from "./ImageItem";
 import "./ImageList.css";
 import { useSelector } from "react-redux";
-import { setSearchTerm, useFetchImagesQuery } from "../store";
+import {
+  setSearchTerm,
+  useFetchImagesQuery,
+  useFetchImageCommentsMutation,
+} from "../store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useImageHook } from "../hooks/useImageHook";
 
-import { setModalVisible, getModalContent, setModalContent } from "../store";
+import { setModalVisible, setModalContent } from "../store";
 
 function ImageList({ term }) {
   const dispatch = useDispatch();
