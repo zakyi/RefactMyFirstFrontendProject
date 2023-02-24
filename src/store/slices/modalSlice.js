@@ -4,17 +4,28 @@ const modalSlice = createSlice({
   name: "modal",
   initialState: {
     modalVisible: false,
-    modalContent: null,
+    modalImageId: "",
+    modalImagePath: "",
+    modalImageHeight: "",
+    modalImageWidth: "",
   },
   reducers: {
     setModalVisible(state, action) {
       state.modalVisible = action.payload;
     },
     setModalContent(state, action) {
-      state.modalContent = action.payload;
+      console.log(action.payload);
+      state.modalImageId = action.payload.imageId;
+      state.modalImagePath = action.payload.imagePath;
+      state.modalImageHeight = action.payload.imageHeight;
+      state.modalImageWidth = action.payload.imageWidth;
+    },
+    getModalContent(state) {
+      return state;
     },
   },
 });
 
-export const { setModalVisible, setModalContent } = modalSlice.actions;
+export const { setModalVisible, setModalContent, getModalContent } =
+  modalSlice.actions;
 export const modalReducer = modalSlice.reducer;

@@ -52,7 +52,6 @@ function useHelperHook() {
     //只在第一次渲染页面的时候向所有图片插入观察器
     useEffect(() => {
       const target = ref.current;
-      console.log(ref);
       if (!observer) {
         observer = new IntersectionObserver(handleIntersection, option);
       }

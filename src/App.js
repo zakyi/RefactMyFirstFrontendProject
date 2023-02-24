@@ -12,7 +12,9 @@ import LogInPage from "./pages/LogInPage";
 import Header from "./components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "./components/Modal";
+import ImageItem from "./components/ImageItem";
 import { setModalVisible } from "./store";
+import { useImageHook } from "./hooks/useImageHook";
 
 /*
  *
@@ -39,8 +41,16 @@ function App() {
   /**
    * Modal 相关
    */
-  const { modalVisible, modalContent } = useSelector((state) => state.modal);
-  console.log(modalVisible);
+  const { likes, collections } = useSelector((state) => state.userData);
+  const { handleAdd, handleLike } = useImageHook();
+  const {
+    modalVisible,
+    modalImageId,
+    modalImagePath,
+    modalImageWidth,
+    modalImageHeight,
+  } = useSelector((state) => state.modal);
+
   const onClose = () => {
     dispatch(setModalVisible(false));
   };
@@ -72,7 +82,23 @@ function App() {
       <Route path="/login">
         <LogInPage />
       </Route>
-      {modalVisible && <Modal onClose={onClose}>{modalContent}</Modal>}
+      {modalVisible && (
+        <Modal onClose={onClose}>
+          <ImageItem
+            handleLike={handleLike}
+            handleAdd={handleAdd}
+            key={modalImageId}
+            image={{
+              id: modalImageId,
+              path: modalImagePath,
+              width: modalImageWidth,
+              height: modalImageHeight,
+            }}
+            likes={likes}
+            collections={collections}
+          />
+        </Modal>
+      )}
     </div>
   );
 }

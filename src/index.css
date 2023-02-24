@@ -397,18 +397,6 @@ button[decoration~="rounded"] {
   cursor: zoom-out;
 }
 
-.modal-content {
-  position: absolute;
-  top: 1rem;
-  left: 70px;
-  right: 70px;
-  /* bottom: 100px; */
-  padding: 5rem;
-  background-color: var(--color-gray-0);
-  border-radius: 5px;
-  box-shadow: 0 0 5px var(--color-gray-8);
-}
-
 .search-bar-content {
   display: flex;
 }

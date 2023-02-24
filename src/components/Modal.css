@@ -1,0 +1,28 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: var(--color-gray-5-opacity-60);
+}
+.modal-background:hover {
+  cursor: zoom-out;
+}
+
+.modal-content {
+  position: absolute;
+  top: 1rem;
+  left: 70px;
+  right: 70px;
+  /* bottom: 100px; */
+  padding: 5rem;
+  background-color: var(--color-gray-0);
+  border-radius: 5px;
+  box-shadow: 0 0 5px var(--color-gray-8);
+}
+
+.modal-image-container {
+  position: relative;
+  width: 100%;
+}

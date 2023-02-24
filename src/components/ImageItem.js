@@ -26,7 +26,6 @@ function ImageItem({
     return collections.includes(image.id) ? "added" : "";
   };
 
-  console.log(imgRef);
   useIntersection(imgRef, () => {
     setIsInview(true);
   });
@@ -34,43 +33,49 @@ function ImageItem({
   /**
    * 懒加载相关，图片不在视野内就移除背景padding
    */
-  const containerStyle = isInView
-    ? {}
-    : { paddingBottom: `${+((image.height / image.width) * 100)}%` };
   return (
-    <div ref={imgRef} className="image-container" style={containerStyle}>
+    <div
+      ref={imgRef}
+      className="image-buttons-alt"
+      style={{ paddingBottom: `${+((image.height / image.width) * 100)}%` }}
+    >
       {isInView && (
-        <div>
-          <img
-            data-image-id={image.id}
-            data-image-path={image.path}
-            className="image"
-            src={image.path}
-            alt="img"
-          />
-          <div className="image-overlay" onClick={onOpenModal}>
-            <Button
-              handleClick={handleLike}
-              type="secondary"
-              decoration="rounded"
-            >
-              {isLoggedIn ? (
-                <p className={checkLiked()}>❤ Like</p>
-              ) : (
-                <Link classes="login-link" label="❤ Like" path="/login" />
-              )}
-            </Button>
-            <Button
-              handleClick={handleAdd}
-              type="secondary"
-              decoration="rounded"
-            >
-              {isLoggedIn ? (
-                <p className={checkAdded()}>+ Add</p>
-              ) : (
-                <Link classes="login-link" label="+ Add" path="/login" />
-              )}
-            </Button>
+        <div className="image-buttons-container">
+          <div className="relative">
+            <img
+              data-image-id={image.id}
+              data-image-path={image.path}
+              data-image-width={image.width}
+              data-image-height={image.height}
+              className="image"
+              src={image.path}
+              alt="img"
+              onClick={onOpenModal}
+            />
+            <div className="buttons-container">
+              <Button
+                handleClick={handleLike}
+                type="secondary"
+                decoration="rounded"
+              >
+                {isLoggedIn ? (
+                  <p className={checkLiked()}>❤ Like</p>
+                ) : (
+                  <Link classes="login-link" label="❤ Like" path="/login" />
+                )}
+              </Button>
+              <Button
+                handleClick={handleAdd}
+                type="secondary"
+                decoration="rounded"
+              >
+                {isLoggedIn ? (
+                  <p className={checkAdded()}>+ Add</p>
+                ) : (
+                  <Link classes="login-link" label="+ Add" path="/login" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
       )}

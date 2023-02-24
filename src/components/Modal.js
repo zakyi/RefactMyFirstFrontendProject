@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
+import "./Modal.css";
 
 function Modal({ onClose, children }) {
   useEffect(() => {
@@ -12,7 +13,9 @@ function Modal({ onClose, children }) {
   return ReactDOM.createPortal(
     <div>
       <div onClick={onClose} className="modal-background"></div>
-      <div className="modal-content">{children}</div>
+      <div className="modal-content">
+        <div className="modal-image-container">{children}</div>
+      </div>
     </div>,
     document.querySelector(".modal-container")
   );

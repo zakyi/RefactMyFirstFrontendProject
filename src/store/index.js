@@ -12,6 +12,7 @@ import {
 import {
   setModalVisible,
   setModalContent,
+  getModalContent,
   modalReducer,
 } from "./slices/modalSlice";
 import { useFetchImagesQuery } from "./apis/imagesApi";
@@ -59,6 +60,7 @@ export {
   setSearchResult,
   setSearchTimeout,
   getSearchState,
+  getModalContent,
 };
 export {
   useFetchImagesQuery,

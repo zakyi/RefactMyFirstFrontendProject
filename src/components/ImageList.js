@@ -1,12 +1,12 @@
 import ImageItem from "./ImageItem";
 import "./ImageList.css";
 import { useSelector } from "react-redux";
-import { setModalContent, setSearchTerm, useFetchImagesQuery } from "../store";
+import { setSearchTerm, useFetchImagesQuery } from "../store";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useUserActionMutation } from "../store";
-import { setUserData, getUserData } from "../store";
-import { setModalVisible } from "../store";
+import { useImageHook } from "../hooks/useImageHook";
+
+import { setModalVisible, getModalContent, setModalContent } from "../store";
 
 function ImageList({ term }) {
   const dispatch = useDispatch();
@@ -18,52 +18,8 @@ function ImageList({ term }) {
   }, []);
   const { searchTerm } = useSelector((state) => state.search);
   const { data, error, isLoading } = useFetchImagesQuery(searchTerm);
-  const [type, setType] = useState("");
-  const [imageId, setImageId] = useState("");
-  const [sendUserAction, sendUserActionResults] = useUserActionMutation();
-  const { isLoggedIn, token, email, likes, collections } = useSelector(
-    (state) => state.userData
-  );
-
-  /**
-   * 监听请求结果的变化，成功就更新用户的state，从而更新页面状态
-   */
-  useEffect(() => {
-    if (sendUserActionResults.isSuccess) {
-      console.log(sendUserActionResults.data);
-      const { email, collections, likes, token, userName } =
-        sendUserActionResults.data;
-      dispatch(setUserData({ email, collections, likes, token, userName }));
-      dispatch(getUserData());
-    } else if (sendUserActionResults.isError) {
-      console.log(sendUserActionResults);
-    }
-  }, [sendUserActionResults.isLoading]);
-
-  /**
-   * 用户点击like和add时会更新imageId和type，useEffect监听更新操作，向服务端发送like或add请求
-   */
-  useEffect(() => {
-    if (imageId !== "" && type !== "") {
-      sendUserAction({ imageId, userEmail: email, token, type });
-    }
-  }, [imageId, type]);
-  const handleLike = (e) => {
-    if (!isLoggedIn) return;
-    setType("likes");
-    setImageId(
-      e.target.closest(".image-container").querySelector(".image").dataset
-        .imageId
-    );
-  };
-  const handleAdd = (e) => {
-    if (!isLoggedIn) return;
-    setType("collections");
-    setImageId(
-      e.target.closest(".image-container").querySelector(".image").dataset
-        .imageId
-    );
-  };
+  const { likes, collections } = useSelector((state) => state.userData);
+  const { handleAdd, handleLike } = useImageHook();
 
   /**
    * 获取网页宽度
@@ -100,24 +56,17 @@ function ImageList({ term }) {
    * Modal相关
    */
   const onOpenModal = (e) => {
-    dispatch(setModalVisible(true));
-    const { imageId, imagePath } = e.target
-      .closest(".image-container")
+    const { imageId, imagePath, imageWidth, imageHeight } = e.target
+      .closest(".image-buttons-container")
       .querySelector(".image").dataset;
-    const content = (
-      <div>
-        <ImageItem
-          handleLike={handleLike}
-          handleAdd={handleAdd}
-          key={imageId}
-          image={{ id: imageId, path: imagePath }}
-          likes={likes}
-          collections={collections}
-          onOpenModal={onOpenModal}
-        />
-      </div>
-    );
+    const content = {
+      imageId,
+      imagePath,
+      imageWidth,
+      imageHeight,
+    };
     dispatch(setModalContent(content));
+    dispatch(setModalVisible(true));
   };
 
   const contents = content.map((list, index) => {
