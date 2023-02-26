@@ -19,6 +19,7 @@ function CommentArea({ imageId }) {
   const [commentText, setCommentText] = useState("");
   const [refresh, setRefresh] = useState(0);
   const [fetchComments, fetchCommentsResult] = useFetchImageCommentsMutation();
+  const [invalidMessage, setInvalidMessage] = useState("");
 
   useEffect(() => {
     fetchComments({ imageId });
@@ -40,7 +41,15 @@ function CommentArea({ imageId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendComment({ userId: email, imageId, comment: commentText, token });
+    console.log(e.target.querySelector("input").value);
+    if (e.target.querySelector("input").value.length >= 255) {
+      setInvalidMessage("Content length must less than 255");
+    } else {
+      setInvalidMessage("");
+    }
+    //获取时间
+    const time = new Date().toString();
+    sendComment({ userId: email, imageId, comment: commentText, token, time });
   };
 
   const handleChangeText = (e) => {
@@ -56,10 +65,10 @@ function CommentArea({ imageId }) {
   };
 
   const commentList = commentResult.map((comment) => {
-    const { content, userEmail } = comment;
+    const { content, userEmail, time } = comment;
     return (
       <div>
-        <CommentItem content={content} userId={userEmail} />
+        <CommentItem content={content} userId={userEmail} time={time} />
       </div>
     );
   });
@@ -80,6 +89,7 @@ function CommentArea({ imageId }) {
             placeholder="Comment"
             // form="comment--form"
           />
+          {invalidMessage}
           <Button type="secondary" decoration="rounded">
             Submit
           </Button>

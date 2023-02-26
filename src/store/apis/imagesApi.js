@@ -33,7 +33,7 @@ const imagesApi = createApi({
         },
       }),
       sendImageComment: builder.mutation({
-        query: ({ userId, imageId, comment, token }) => {
+        query: ({ userId, imageId, comment, token, time }) => {
           return {
             url: `/images/comments`,
             method: "POST",
@@ -42,6 +42,7 @@ const imagesApi = createApi({
               userId,
               comment,
               type: "comment",
+              time,
             },
             headers: {
               Authorization: `Bearer ${token}`,
