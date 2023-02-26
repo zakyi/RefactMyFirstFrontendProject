@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 100%;
+  bottom: 0;
   background-color: var(--color-gray-5-opacity-60);
 }
 .modal-background:hover {
@@ -11,12 +11,11 @@
 }
 
 .modal-content {
-  position: absolute;
-  top: 1rem;
+  position: fixed;
+  top: 100px;
   left: 70px;
   right: 70px;
-  /* bottom: 100px; */
-  padding: 5rem;
+  bottom: 100px;
   background-color: var(--color-gray-0);
   border-radius: 5px;
   box-shadow: 0 0 5px var(--color-gray-8);
@@ -25,4 +24,26 @@
 .modal-image-container {
   position: relative;
   width: 100%;
+  height: 100%;
 }
+
+/* @media screen and (min-width: 950px) {
+  .modal-content {
+    left: 200px;
+    right: 200px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .modal-content {
+    left: 300px;
+    right: 300px;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .modal-content {
+    left: 400px;
+    right: 400px;
+  }
+} */

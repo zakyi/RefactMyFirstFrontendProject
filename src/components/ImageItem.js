@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Link from "./Link";
 import { useState, useRef } from "react";
 import { useHelperHook } from "../hooks/useHelperHook";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 function ImageItem({
   image,
@@ -13,6 +13,7 @@ function ImageItem({
   likes,
   collections,
   onOpenModal,
+  type,
 }) {
   const { isLoggedIn } = useSelector((state) => state.userData);
   const [isInView, setIsInview] = useState(false);
@@ -31,9 +32,6 @@ function ImageItem({
     setIsInview(true);
   });
 
-  /**
-   * 懒加载相关，图片不在视野内就移除背景padding
-   */
   return (
     <div
       ref={imgRef}
@@ -80,7 +78,7 @@ function ImageItem({
             </div>
             <div className="likes-container">
               <div className="likes-container-avatar">
-                <AiOutlineHeart />
+                <AiFillHeart />
               </div>
               <div className="likes-container-number"> {image.likeCount}</div>
             </div>

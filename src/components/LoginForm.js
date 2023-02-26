@@ -3,7 +3,12 @@ import { useFetchUserMutation } from "../store";
 import Form from "./Form";
 import { useValidationHook } from "../hooks/useValidationHook";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserData, setIsLoggedIn, getUserData } from "../store";
+import {
+  setUserData,
+  setIsLoggedIn,
+  getUserData,
+  setCurrentPath,
+} from "../store";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -23,6 +28,7 @@ function LoginForm() {
       dispatch(setUserData(fetchUserResults.data));
       dispatch(setIsLoggedIn(true));
       dispatch(getUserData());
+      dispatch(setCurrentPath("/"));
       window.localStorage.setItem("userData", userData.token);
     } else if (fetchUserResults.isError) {
       setMessage(fetchUserResults.error.data.error);

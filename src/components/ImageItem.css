@@ -27,7 +27,7 @@
 }
 
 .image:hover {
-  opacity: 60%;
+  opacity: 80%;
 }
 
 .relative .buttons-container {
@@ -56,6 +56,7 @@
   bottom: 0;
   right: 0;
   display: none;
+  color: #c92a2a;
 }
 
 .image:hover ~ .likes-container {

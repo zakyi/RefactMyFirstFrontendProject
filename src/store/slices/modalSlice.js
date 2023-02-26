@@ -15,12 +15,11 @@ const modalSlice = createSlice({
       state.modalVisible = action.payload;
     },
     setModalContent(state, action) {
-      console.log(action.payload);
       state.modalImageId = action.payload.imageId;
       state.modalImagePath = action.payload.imagePath;
       state.modalImageHeight = action.payload.imageHeight;
       state.modalImageWidth = action.payload.imageWidth;
-      state.modalImageLikeCount = action.payload.imagelikeCount;
+      state.modalImageLikeCount = action.payload.imageLikecount;
     },
     getModalContent(state) {
       return state;

@@ -60,7 +60,11 @@ function ImageList({ term }) {
    * Modal相关
    */
   const onOpenModal = (e) => {
-    const { imageId, imagePath, imageWidth, imageHeight, imagelikeCount } =
+    console.log(
+      e.target.closest(".image-buttons-container").querySelector(".image")
+        .dataset
+    );
+    const { imageId, imagePath, imageWidth, imageHeight, imageLikecount } =
       e.target
         .closest(".image-buttons-container")
         .querySelector(".image").dataset;
@@ -69,8 +73,9 @@ function ImageList({ term }) {
       imagePath,
       imageWidth,
       imageHeight,
-      imagelikeCount,
+      imageLikecount,
     };
+    console.log(content);
     dispatch(setModalContent(content));
     dispatch(setModalVisible(true));
   };

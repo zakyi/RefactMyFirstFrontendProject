@@ -16,6 +16,7 @@ import CommentArea from "./components/CommentArea";
 import ImageItem from "./components/ImageItem";
 import { setModalVisible } from "./store";
 import { useImageHook } from "./hooks/useImageHook";
+import "./App.css";
 
 /*
  *
@@ -50,6 +51,7 @@ function App() {
     modalImagePath,
     modalImageWidth,
     modalImageHeight,
+    modalImageLikeCount,
   } = useSelector((state) => state.modal);
 
   const onClose = () => {
@@ -86,20 +88,26 @@ function App() {
       {modalVisible && (
         <Modal onClose={onClose}>
           <div className="inner-modal">
-            <ImageItem
-              handleLike={handleLike}
-              handleAdd={handleAdd}
-              key={modalImageId}
-              image={{
-                id: modalImageId,
-                path: modalImagePath,
-                width: modalImageWidth,
-                height: modalImageHeight,
-              }}
-              likes={likes}
-              collections={collections}
-            />
-            <CommentArea imageId={modalImageId} />
+            <div className="inner-modal-image-container">
+              <ImageItem
+                handleLike={handleLike}
+                handleAdd={handleAdd}
+                key={modalImageId}
+                image={{
+                  id: modalImageId,
+                  path: modalImagePath,
+                  width: modalImageWidth,
+                  height: modalImageHeight,
+                  likeCount: modalImageLikeCount,
+                }}
+                likes={likes}
+                collections={collections}
+                type="modalImage"
+              />
+            </div>
+            <div className="inner-modal-comment-container">
+              <CommentArea imageId={modalImageId} />
+            </div>
           </div>
         </Modal>
       )}

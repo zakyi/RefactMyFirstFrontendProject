@@ -1,0 +1,22 @@
+.inner-modal {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  height: 100%;
+}
+.inner-modal-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-modal-image-container .image-buttons-alt {
+  width: 100%;
+}
+
+.inner-modal-image-container .image {
+  object-fit: contain;
+}
+
+.inner-modal-comment-container {
+  overflow-y: scroll;
+}
