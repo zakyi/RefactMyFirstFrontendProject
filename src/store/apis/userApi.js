@@ -28,7 +28,6 @@ const userApi = createApi({
       }),
       verifyUser: builder.mutation({
         query: ({ token, ...data }) => {
-          console.log(data);
           return {
             method: "POST",
             url: `users/verifyUser`,

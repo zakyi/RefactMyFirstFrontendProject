@@ -27,15 +27,17 @@ function LoginForm() {
       setMessage("Login success, enjoy!");
       dispatch(setUserData(fetchUserResults.data));
       dispatch(setIsLoggedIn(true));
-      dispatch(getUserData());
       dispatch(setCurrentPath("/"));
-      window.localStorage.setItem("userData", userData.token);
     } else if (fetchUserResults.isError) {
       setMessage(fetchUserResults.error.data.error);
     } else if (fetchUserResults.isLoading) {
       setMessage("loading...");
     }
   }, [fetchUserResults.status]);
+
+  // useEffect(() => {
+  //   console.log(userData.token);
+  // }, [userData.isLoggedIn]);
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);

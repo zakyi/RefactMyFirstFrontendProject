@@ -1,5 +1,10 @@
 import MainPage from "./pages/MainPage";
-import { setCurrentPath } from "./store";
+import {
+  setCurrentPath,
+  useVerifyUserMutation,
+  setUserData,
+  setIsLoggedIn,
+} from "./store";
 import { useEffect, useState } from "react";
 import Route from "./components/Route";
 import ProfilePage from "./pages/ProfilePage";
@@ -25,6 +30,34 @@ import "./App.css";
  * */
 function App() {
   const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.userData);
+  const [verifyUser, verifyUserResults] = useVerifyUserMutation();
+
+  /**
+   * 未登录时检查浏览器是否有token
+   */
+  useEffect(() => {
+    const token = localStorage.getItem("userData");
+    if (!isLoggedIn && token !== null) {
+      console.log("Verify user");
+      verifyUser({ token });
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (verifyUserResults.isSuccess) {
+      const newUser = {
+        email: verifyUserResults.data.userData.email,
+        userName: verifyUserResults.data.userData.userName,
+        likes: verifyUserResults.data.userData.likes.split(","),
+        collections: verifyUserResults.data.userData.collections.split(","),
+        token: verifyUserResults.data.token,
+      };
+      dispatch(setUserData(newUser));
+      dispatch(setIsLoggedIn(true));
+      dispatch(setCurrentPath("/"));
+    }
+  }, [verifyUserResults.isLoading]);
 
   /**
    *  实现route功能
