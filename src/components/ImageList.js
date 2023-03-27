@@ -9,10 +9,12 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useImageHook } from "../hooks/useImageHook";
+import { useHelperHook } from "../hooks/useHelperHook";
 
 import { setModalVisible, setModalContent } from "../store";
 
 function ImageList({ term }) {
+  console.log("ImageList Rerender");
   const dispatch = useDispatch();
   useEffect(() => {
     if (term !== undefined) {
@@ -33,12 +35,20 @@ function ImageList({ term }) {
     width < 746 ? 1 : width < 1024 ? 2 : width >= 1024 ? 3 : 4
   );
   /**
+   * 添加节流
+   */
+  const { throttle } = useHelperHook();
+
+  /**
    * 每次resize获取网页宽度，动态改变grid布局中的column
    */
   const handleChangeWidth = () => {
     width = window.innerWidth;
+    console.log(width);
     setColumns(width < 746 ? 1 : width < 1024 ? 2 : width >= 1024 ? 3 : 4);
   };
+  const handleChangeWidthThrottle = throttle(handleChangeWidth);
+
   useEffect(() => {
     window.addEventListener("resize", handleChangeWidth);
     return () => window.removeEventListener("resize", handleChangeWidth);

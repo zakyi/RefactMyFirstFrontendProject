@@ -46,7 +46,7 @@ function ImageItem({
               data-image-path={image.path}
               data-image-width={image.width}
               data-image-height={image.height}
-              data-image-likeCount={image.likeCount}
+              data-image-like-count={image.likeCount}
               className="image"
               src={image.path}
               alt="img"

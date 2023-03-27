@@ -27,6 +27,7 @@ function SearchBar() {
   const [term, setTerm] = useState("");
   const [hints, setHints] = useState([]);
   const _input = useRef();
+  console.log("SearchBar Rerender");
   const { debouce } = useHelperHook();
 
   useEffect(() => {
