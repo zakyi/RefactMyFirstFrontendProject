@@ -132,6 +132,7 @@ function useHelperHook() {
 
   const throttle = function (callback, delay = DEBOUNCE_DELAY) {
     let shouldWait = false;
+    console.log("test");
     let middleArgs;
     const middleFunc = () => {
       if (middleArgs != undefined) {
