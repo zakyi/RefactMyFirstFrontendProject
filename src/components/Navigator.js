@@ -7,19 +7,19 @@ import Link from "./Link";
 function Navigator() {
   const links = [
     {
-      label: "WallPaper",
+      label: "wallPaper",
       path: "/wallpaper",
     },
     {
-      label: "Anime",
+      label: "anime",
       path: "/anime",
     },
     {
-      label: "Nature",
+      label: "nature",
       path: "/nature",
     },
     {
-      label: "Culture",
+      label: "culture",
       path: "/culture",
     },
   ];

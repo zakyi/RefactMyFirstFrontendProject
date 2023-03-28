@@ -62,25 +62,14 @@ function SearchBar() {
     setIsActive(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(setSearchTerm(term));
-  };
-
-  const handleClick = (e) => {
-    const term = e.target
-      .closest(".hint-item")
-      .querySelector(".hint-content").textContent;
-    console.log(term);
-    dispatch(setSearchTerm(term));
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(setSearchTerm(term));
+  // };
 
   return (
     <div className="search-bar-container">
-      <form
-        onSubmit={handleSubmit}
-        className={`form ${isActive && "form-active"}`}
-      >
+      <form className={`form ${isActive && "form-active"}`}>
         <button>
           <GoSearch />
         </button>
@@ -92,7 +81,7 @@ function SearchBar() {
           onFocus={handleFocus}
           placeholder="search"
         ></input>
-        <Hint hints={hints} handleClick={handleClick} />
+        <Hint hints={hints} />
       </form>
     </div>
   );

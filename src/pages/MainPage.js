@@ -10,7 +10,7 @@ function MainPage() {
       <MainImage title="SuperSplash">
         <img className="banner-image" src={HomeImage} />
       </MainImage>
-      <SearchResult />
+      <SearchResult term="anime" />
     </div>
   );
 }

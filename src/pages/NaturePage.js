@@ -2,6 +2,7 @@ import Navigator from "../components/Navigator";
 import MainImage from "../components/MainImage";
 import ImageList from "../components/ImageList";
 import NaturePageBanner from "../assets/NaturePageBanner.jpg";
+import SearchResult from "../components/SearchResult";
 
 function NaturePage() {
   return (
@@ -10,7 +11,7 @@ function NaturePage() {
       <MainImage title="Nature">
         <img className="banner-image" src={NaturePageBanner} />
       </MainImage>
-      <ImageList key="naturePage" term="nature" />
+      <SearchResult term="nature" />
     </div>
   );
 }
