@@ -2,7 +2,7 @@ import "./ImageItem.css";
 import Button from "./Button";
 import { useSelector } from "react-redux";
 import Link from "./Link";
-import { useState, useRef } from "react";
+import { useState, useRef, memo } from "react";
 import { useHelperHook } from "../hooks/useHelperHook";
 import { AiFillHeart } from "react-icons/ai";
 
@@ -90,3 +90,4 @@ function ImageItem({
 }
 
 export default ImageItem;
+// export default memo(ImageItem);

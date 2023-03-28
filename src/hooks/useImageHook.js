@@ -5,8 +5,9 @@ import { setUserData, getUserData } from "../store";
 
 function useImageHook() {
   const dispatch = useDispatch();
-  const [type, setType] = useState("");
-  const [imageId, setImageId] = useState("");
+  // const [type, setType] = useState("");
+  // const [imageId, setImageId] = useState("");
+  const [userAction, setUserAction] = useState({ type: "", imageId: "" });
   const [sendUserAction, sendUserActionResults] = useUserActionMutation();
   const { isLoggedIn, token, email, likes, collections } = useSelector(
     (state) => state.userData
@@ -18,10 +19,17 @@ function useImageHook() {
   useEffect(() => {
     if (sendUserActionResults.isSuccess) {
       console.log(sendUserActionResults.data);
-      const { email, collections, likes, token, userName } =
+      const { emailData, collectionsData, likesData, tokenData, userNameData } =
         sendUserActionResults.data;
-      dispatch(setUserData({ email, collections, likes, token, userName }));
-      dispatch(getUserData());
+      dispatch(
+        setUserData({
+          emailData,
+          collectionsData,
+          likesData,
+          tokenData,
+          userNameData,
+        })
+      );
     } else if (sendUserActionResults.isError) {
       console.log(sendUserActionResults);
     }
@@ -31,26 +39,43 @@ function useImageHook() {
    * 用户点击like和add时会更新imageId和type，useEffect监听更新操作，向服务端发送like或add请求
    */
   useEffect(() => {
-    if (imageId !== "" && type !== "") {
-      sendUserAction({ imageId, userEmail: email, token, type });
+    if (userAction.imageId !== "" && userAction.type !== "") {
+      sendUserAction({
+        imageId: userAction.imageId,
+        userEmail: email,
+        token,
+        type: userAction.type,
+      });
     }
-  }, [imageId, type]);
+  }, [userAction.imageId, userAction.type]);
 
   const handleLike = (e) => {
     if (!isLoggedIn) return;
-    setType("likes");
-    setImageId(
-      e.target.closest(".image-buttons-container").querySelector(".image")
-        .dataset.imageId
-    );
+    setUserAction({
+      type: "like",
+      imageId: e.target
+        .closest(".image-buttons-container")
+        .querySelector(".image").dataset.imageId,
+    });
+    // setType("likes");
+    // setImageId(
+    //   e.target.closest(".image-buttons-container").querySelector(".image")
+    //     .dataset.imageId
+    // );
   };
   const handleAdd = (e) => {
     if (!isLoggedIn) return;
-    setType("collections");
-    setImageId(
-      e.target.closest(".image-buttons-container").querySelector(".image")
-        .dataset.imageId
-    );
+    setUserAction({
+      type: "collections",
+      imageId: e.target
+        .closest(".image-buttons-container")
+        .querySelector(".image").dataset.imageId,
+    });
+    // setType("collections");
+    // setImageId(
+    //   e.target.closest(".image-buttons-container").querySelector(".image")
+    //     .dataset.imageId
+    // );
   };
 
   return { handleAdd, handleLike };
