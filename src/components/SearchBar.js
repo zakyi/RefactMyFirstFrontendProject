@@ -1,6 +1,6 @@
 import "../index.css";
 import { GoSearch } from "react-icons/go";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { setSearchTerm } from "../store";
 import { useDispatch } from "react-redux";
 import Hint from "./Hint";
@@ -48,7 +48,7 @@ function SearchBar() {
     if (term === "") setHints([]);
   };
 
-  const laterShowHint = debouce(showHint, DEBOUNCE_DELAY);
+  const laterShowHint = useCallback(debouce(showHint, DEBOUNCE_DELAY), []) ;
 
   const handleChange = (e) => {
     setTerm(e.target.value);

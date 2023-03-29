@@ -71,6 +71,7 @@ function ImageList({ term }) {
     dispatch(setModalContent(contentImage));
     dispatch(setModalVisible(true));
   };
+
   /**
    * 获取图片array，平均分成三份，也就是长度为三的数组content
    * [[],[],[]]

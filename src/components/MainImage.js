@@ -1,5 +1,4 @@
 function MainImage({ children, title }) {
-  console.log("MainImage Render");
   return (
     <div className="banner-image-container">
       {children}
