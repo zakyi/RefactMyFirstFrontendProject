@@ -4,7 +4,7 @@ import { ROOT_URL } from "../../static/config";
 const imagesApi = createApi({
   reducerPath: "images",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${ROOT_URL}:3005`,
+    baseUrl: `${ROOT_URL}:443`,
   }),
   endpoints(builder) {
     return {
