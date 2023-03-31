@@ -19,7 +19,6 @@ clientsClaim();
 // Their URLs are injected into the manifest variable below.
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
-console.log(self.__WB_MANIFEST);
 precacheAndRoute(self.__WB_MANIFEST);
 
 // Set up App Shell-style routing, so that all navigation requests
@@ -64,49 +63,17 @@ registerRoute(
 // );
 
 // This allows the web app to trigger skipWaiting via
-// registration.waiting.postMessage({type: 'SKIP_WAITING'})
-// const matchCb = ({ url, request, event }) => {
-//   return url.pathname === "/special/url";
-// };
 
-// const handlerCb = async ({ url, request, event, params }) => {
-//   const response = await fetch(request);
-//   const responseBody = await response.text();
-//   return new Response(`${responseBody} <!-- Look Ma. Added Content. -->`, {
-//     headers: response.headers,
-//   });
-// };
-
-// registerRoute(matchCb, handlerCb);
-
-// registerRoute(
-//   new RegExp("/images/.*\\.webp"),
-//   new StaleWhileRevalidate({
-//     cacheName: "images",
-//     plugins: [
-//       // Ensure that once this runtime cache reaches a maximum size the
-//       // least-recently used images are removed.
-//       new ExpirationPlugin({
-//         maxEntries: 50,
-//       }),
-//     ],
-//   })
-// );
-// const addResourcesToCache = async (resources) => {
-//   const cache = await caches.open("v1");
-//   await cache.addAll(resources);
-// };
-
-// self.addEventListener("install", (event) => {
-//   event.waitUntil(addResourcesToCache(["/images"]));
-// });
-
-// self.addEventListener("fetch", (e) => {
-//   console.log(e);
-//   const requestURL = new URL(e.request.url);
-//   if (/\.webp$/.test(requestURL.pathname)) {
-//     console.log("[Service Worker]Webp file detected");
-//     e.respondWith("lalala");
-//     return;
-//   }
-// });
+registerRoute(
+  new RegExp("/images/.*\\.webp"),
+  new StaleWhileRevalidate({
+    cacheName: "images",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({
+        maxEntries: 50,
+      }),
+    ],
+  })
+);
