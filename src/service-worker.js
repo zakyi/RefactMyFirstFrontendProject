@@ -91,18 +91,21 @@ registerRoute(
 //     ],
 //   })
 // );
-const addResourcesToCache = async (resources) => {
-  const cache = await caches.open("v1");
-  await cache.addAll(resources);
-};
+// const addResourcesToCache = async (resources) => {
+//   const cache = await caches.open("v1");
+//   await cache.addAll(resources);
+// };
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(addResourcesToCache(["/images"]));
-});
+// self.addEventListener("install", (event) => {
+//   event.waitUntil(addResourcesToCache(["/images"]));
+// });
 
 self.addEventListener("fetch", (e) => {
   console.log(e);
-  self.addEventListener("fetch", (event) => {
-    event.respondWith(caches.match(event.request));
-  });
+  const requestURL = new URL(e.request.url);
+  if (/\.webp$/.test(requestURL.pathname)) {
+    console.log("[Service Worker]Webp file detected");
+    e.respondWith("lalala");
+    return;
+  }
 });
