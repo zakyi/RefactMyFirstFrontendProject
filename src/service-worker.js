@@ -73,6 +73,11 @@ self.addEventListener("message", (event) => {
 // Any other custom service worker logic can go here.
 self.addEventListener("install", function (event) {
   console.log("install");
+  function onInstall() {
+    return caches.open("static").then((cache) => cache.addAll(["/images/*"]));
+  }
+
+  event.waitUntil(onInstall(event));
 });
 
 self.addEventListener("activate", function (event) {
@@ -81,4 +86,5 @@ self.addEventListener("activate", function (event) {
 
 self.addEventListener("fetch", function (event) {
   console.log("fetch");
+  console.log(event);
 });
