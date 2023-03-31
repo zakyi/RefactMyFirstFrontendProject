@@ -19,6 +19,7 @@ clientsClaim();
 // Their URLs are injected into the manifest variable below.
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
+console.log(self.__WB_MANIFEST);
 precacheAndRoute(self.__WB_MANIFEST);
 
 // Set up App Shell-style routing, so that all navigation requests
@@ -100,12 +101,12 @@ registerRoute(
 //   event.waitUntil(addResourcesToCache(["/images"]));
 // });
 
-self.addEventListener("fetch", (e) => {
-  console.log(e);
-  const requestURL = new URL(e.request.url);
-  if (/\.webp$/.test(requestURL.pathname)) {
-    console.log("[Service Worker]Webp file detected");
-    e.respondWith("lalala");
-    return;
-  }
-});
+// self.addEventListener("fetch", (e) => {
+//   console.log(e);
+//   const requestURL = new URL(e.request.url);
+//   if (/\.webp$/.test(requestURL.pathname)) {
+//     console.log("[Service Worker]Webp file detected");
+//     e.respondWith("lalala");
+//     return;
+//   }
+// });
