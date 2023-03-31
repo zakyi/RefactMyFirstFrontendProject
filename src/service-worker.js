@@ -53,7 +53,7 @@ registerRoute(
   ({ url }) =>
     url.origin === self.location.origin && url.pathname.endsWith(".png"), // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: "images",
+    cacheName: "png",
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -64,47 +64,28 @@ registerRoute(
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-  }
-});
+// const matchCb = ({ url, request, event }) => {
+//   return url.pathname === "/special/url";
+// };
 
-// Any other custom service worker logic can go here.
-// var cacheName = "images";
-// var appShellFiles = ["/images/culture/*.webp"];
+// const handlerCb = async ({ url, request, event, params }) => {
+//   const response = await fetch(request);
+//   const responseBody = await response.text();
+//   return new Response(`${responseBody} <!-- Look Ma. Added Content. -->`, {
+//     headers: response.headers,
+//   });
+// };
 
-self.addEventListener("install", function (e) {
-  console.log("[Service Worker] Install");
-  // e.waitUntil(
-  //   caches.open(cacheName).then(function (cache) {
-  //     console.log("[Service Worker] Caching all: app shell and content");
-  //     return cache.addAll(appShellFiles);
-  //   })
-  // );
-});
+// registerRoute(matchCb, handlerCb);
 
-self.addEventListener("activate", function (event) {
-  console.log("activate");
-});
-
-self.addEventListener("fetch", function (e) {
-  console.log(e.request.url);
-  // e.respondWith(
-  //   caches.match(e.request).then(function (r) {
-  //     console.log("[Service Worker] Fetching resource: " + e.request.url);
-  //     return (
-  //       r ||
-  //       fetch(e.request).then(function (response) {
-  //         return caches.open(cacheName).then(function (cache) {
-  //           console.log(
-  //             "[Service Worker] Caching new resource: " + e.request.url
-  //           );
-  //           cache.put(e.request, response.clone());
-  //           return response;
-  //         });
-  //       })
-  //     );
-  //   })
-  // );
-});
+registerRoute(
+  new RegExp("/images/.*\\.webp"),
+  new StaleWhileRevalidate({
+    cacheName: "images",
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
