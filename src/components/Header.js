@@ -24,7 +24,7 @@ function Header() {
           <Link
             classes="nav-logo"
             key="login"
-            label="CiLogin"
+            label={<CiLogin />}
             path="/login"
           ></Link>
         )}
