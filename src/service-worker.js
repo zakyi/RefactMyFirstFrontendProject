@@ -64,16 +64,7 @@ registerRoute(
 
 // This allows the web app to trigger skipWaiting via
 
-registerRoute(
-  new RegExp("/images/.*\\.webp"),
-  new StaleWhileRevalidate({
-    cacheName: "images",
-    plugins: [
-      // Ensure that once this runtime cache reaches a maximum size the
-      // least-recently used images are removed.
-      new ExpirationPlugin({
-        maxEntries: 50,
-      }),
-    ],
-  })
-);
+const handlerCb = ({ url, event, params }) => {
+  return Promise.resolve(new Response("Hello World!"));
+};
+registerRoute(new RegExp("/images/.*"), handlerCb);
