@@ -21,7 +21,7 @@ function Link({ label, path, classes }) {
 
   return (
     <a href={path} onClick={handleClick} className={classes}>
-      {label}
+      <div>{label}</div>
     </a>
   );
 }

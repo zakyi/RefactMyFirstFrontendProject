@@ -3,6 +3,7 @@ import Link from "./Link";
 import { GoHome } from "react-icons/go";
 import { RxAvatar } from "react-icons/rx";
 import { useSelector } from "react-redux";
+import { CiLogin } from "react-icons/ci";
 
 function Header() {
   const { isLoggedIn } = useSelector((state) => state.userData);
@@ -23,7 +24,7 @@ function Header() {
           <Link
             classes="nav-logo"
             key="login"
-            label="Log In"
+            label="CiLogin"
             path="/login"
           ></Link>
         )}
