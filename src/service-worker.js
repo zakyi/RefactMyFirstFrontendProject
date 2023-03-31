@@ -89,6 +89,7 @@ self.addEventListener("activate", function (event) {
 });
 
 self.addEventListener("fetch", function (e) {
+  console.log(e.request.url);
   e.respondWith(
     caches.match(e.request).then(function (r) {
       console.log("[Service Worker] Fetching resource: " + e.request.url);
