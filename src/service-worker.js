@@ -67,4 +67,4 @@ registerRoute(
 const handlerCb = ({ url, event, params }) => {
   return Promise.resolve(new Response("Hello World!"));
 };
-registerRoute(new RegExp("/images/.*"), handlerCb);
+registerRoute(new RegExp("https://.*/images/.*"), handlerCb);
