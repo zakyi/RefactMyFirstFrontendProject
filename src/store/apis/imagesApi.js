@@ -4,6 +4,7 @@ import { ROOT_URL } from "../../static/config";
 const imagesApi = createApi({
   reducerPath: "images",
   baseQuery: fetchBaseQuery({
+    //nginx的域名
     baseUrl: `${ROOT_URL}:443`,
   }),
   endpoints(builder) {
