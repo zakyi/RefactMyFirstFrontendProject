@@ -49,6 +49,7 @@ export function register(config) {
         });
       } else {
         // Is not localhost. Just register service worker
+        console.log("service worker registation");
         registerValidSW(swUrl, config);
       }
     });
@@ -65,6 +66,7 @@ function registerValidSW(swUrl, config) {
           return;
         }
         installingWorker.onstatechange = () => {
+          console.log("installingWorker.state = ", installingWorker.state);
           if (installingWorker.state === "installed") {
             if (navigator.serviceWorker.controller) {
               // At this point, the updated precached content has been fetched,
