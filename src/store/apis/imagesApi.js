@@ -5,7 +5,7 @@ const imagesApi = createApi({
   reducerPath: "images",
   baseQuery: fetchBaseQuery({
     //nginx的域名
-    baseUrl: `${ROOT_URL}:443`,
+    baseUrl: `${ROOT_URL}:8443`,
   }),
   endpoints(builder) {
     return {

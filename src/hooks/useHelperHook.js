@@ -38,7 +38,8 @@ function useHelperHook() {
 
   function useIntersection(ref, handle) {
     const handleIntersection = (entries, observer) => {
-      //entries是所有DOM元素
+      //entries就是obser
+      console.log(entries);
       entries.forEach((entry) => {
         if (entry.isIntersecting || entry.intersectionRatio > 0) {
           handle();
