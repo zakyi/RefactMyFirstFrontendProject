@@ -48,13 +48,6 @@ function App() {
 
   useEffect(() => {
     if (verifyUserResults.isSuccess) {
-      // const newUser = {
-      //   email: verifyUserResults.data.userData.email,
-      //   userName: verifyUserResults.data.userData.userName,
-      //   likes: verifyUserResults.data.userData.likes.split(","),
-      //   collections: verifyUserResults.data.userData.collections.split(","),
-      //   token: verifyUserResults.data.token,
-      // };
       const data = localStorage.getItem("userData");
       if (!data) return;
       const userData = JSON.parse(data);
