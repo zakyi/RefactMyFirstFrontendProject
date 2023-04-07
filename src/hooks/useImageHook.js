@@ -18,7 +18,6 @@ function useImageHook() {
    */
   useEffect(() => {
     if (sendUserActionResults.isSuccess) {
-      console.log(sendUserActionResults.data);
       const { emailData, collectionsData, likesData, tokenData, userNameData } =
         sendUserActionResults.data;
       dispatch(
@@ -52,7 +51,7 @@ function useImageHook() {
   const handleLike = (e) => {
     if (!isLoggedIn) return;
     setUserAction({
-      type: "like",
+      type: "likes",
       imageId: e.target
         .closest(".image-buttons-container")
         .querySelector(".image").dataset.imageId,
