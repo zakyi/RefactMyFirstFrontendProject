@@ -27,19 +27,16 @@ const userDataSlice = createSlice({
       return state;
     },
     setLikesOrCollections(state, action) {
-      console.log(action.payload);
       const { type, imageId } = action.payload;
       if (type === "likes") {
         const likes = state.likes;
         likes.push(imageId);
         state.likes = likes;
-        console.log("state change", state);
       }
       if (type === "collections") {
         const collections = state.collections;
         collections.push(imageId);
         state.collections = collections;
-        console.log("state change", state);
       }
     },
   },

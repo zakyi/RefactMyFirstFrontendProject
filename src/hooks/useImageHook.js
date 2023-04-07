@@ -18,18 +18,6 @@ function useImageHook() {
    */
   useEffect(() => {
     if (sendUserActionResults.isSuccess) {
-      // const { emailData, collectionsData, likesData, tokenData, userNameData } =
-      //   sendUserActionResults.data;
-      // dispatch(
-      //   setUserData({
-      //     emailData,
-      //     collectionsData,
-      //     likesData,
-      //     tokenData,
-      //     userNameData,
-      //   })
-      // );
-      console.log("userAction success", userAction);
       dispatch(setLikesOrCollections(userAction));
     } else if (sendUserActionResults.isError) {
       console.log(sendUserActionResults);
