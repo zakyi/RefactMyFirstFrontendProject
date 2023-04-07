@@ -37,7 +37,9 @@ function App() {
    * 未登录时检查浏览器是否有token
    */
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const data = localStorage.getItem("userData");
+    if (!data) return;
+    const userData = JSON.parse(data);
     console.log(userData);
     if (!isLoggedIn && userData.token !== null) {
       console.log("Verify user");
