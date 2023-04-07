@@ -26,9 +26,26 @@ const userDataSlice = createSlice({
     getUserData(state) {
       return state;
     },
+    setLikesOrCollections(state, action) {
+      const { type, imageId } = action.payload;
+      if (type === "likes") {
+        const likes = state.likes;
+        likes.push(imageId);
+        state.likes = likes;
+      }
+      if (type === "collections") {
+        const collections = state.collections;
+        collections.push(imageId);
+        state.collections = collections;
+      }
+    },
   },
 });
 
-export const { setIsLoggedIn, setUserData, getUserData } =
-  userDataSlice.actions;
+export const {
+  setIsLoggedIn,
+  setUserData,
+  getUserData,
+  setLikesOrCollections,
+} = userDataSlice.actions;
 export const userDataReducer = userDataSlice.reducer;

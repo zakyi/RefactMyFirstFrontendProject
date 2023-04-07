@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useUserActionMutation } from "../store";
 import { useSelector, useDispatch } from "react-redux";
-import { setUserData, getUserData } from "../store";
+import { setUserData, getUserData, setLikesOrCollections } from "../store";
 
 function useImageHook() {
   const dispatch = useDispatch();
@@ -29,7 +29,8 @@ function useImageHook() {
       //     userNameData,
       //   })
       // );
-      console.log("action success");
+      console.log(userAction);
+      setLikesOrCollections(userAction);
     } else if (sendUserActionResults.isError) {
       console.log(sendUserActionResults);
     }

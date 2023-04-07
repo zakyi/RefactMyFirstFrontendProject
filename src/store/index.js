@@ -25,6 +25,7 @@ import {
   setIsLoggedIn,
   setUserData,
   getUserData,
+  setLikesOrCollections,
 } from "./slices/userDataSlice";
 import { userApi } from "./apis/userApi";
 import {
@@ -65,6 +66,7 @@ export {
   setSearchTimeout,
   getSearchState,
   getModalContent,
+  setLikesOrCollections,
 };
 export {
   useFetchImagesQuery,
