@@ -39,10 +39,10 @@ function App() {
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     console.log(userData);
-    // if (!isLoggedIn && token !== null) {
-    //   console.log("Verify user");
-    //   verifyUser({ token });
-    // }
+    if (!isLoggedIn && userData.token !== null) {
+      console.log("Verify user");
+      verifyUser({ token: userData.token });
+    }
   }, [isLoggedIn]);
 
   useEffect(() => {
