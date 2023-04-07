@@ -21,7 +21,7 @@ function Link({ label, path, classes }) {
 
   return (
     <a href={path} onClick={handleClick} className={classes}>
-      <div>{label[0].toUpperCase() + label.slice(1)}</div>
+      <div>{label}</div>
     </a>
   );
 }
