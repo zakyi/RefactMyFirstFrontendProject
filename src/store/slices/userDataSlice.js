@@ -32,11 +32,17 @@ const userDataSlice = createSlice({
         const likes = state.likes;
         likes.push(imageId);
         state.likes = likes;
+        const data = JSON.parse(window.localStorage.getItem("userData"));
+        data.likes = likes;
+        window.localStorage.setItem("userData", JSON.stringify(data));
       }
       if (type === "collections") {
         const collections = state.collections;
         collections.push(imageId);
         state.collections = collections;
+        const data = JSON.parse(window.localStorage.getItem("userData"));
+        data.collections = collections;
+        window.localStorage.setItem("userData", JSON.stringify(data));
       }
     },
   },
