@@ -32,11 +32,13 @@ const userDataSlice = createSlice({
         const likes = state.likes;
         likes.push(imageId);
         state.likes = likes;
+        console.log("state change", state);
       }
       if (type === "collections") {
         const collections = state.collections;
         collections.push(imageId);
         state.collections = collections;
+        console.log("state change", state);
       }
     },
   },
