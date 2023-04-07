@@ -14,8 +14,6 @@ import { useHelperHook } from "../hooks/useHelperHook";
 import { setModalVisible, setModalContent } from "../store";
 
 function ImageList({ term }) {
-  console.log(term);
-  console.log("ImageList Rerender");
   const dispatch = useDispatch();
 
   const { data, error, isLoading } = useFetchImagesQuery(term);
@@ -38,7 +36,6 @@ function ImageList({ term }) {
    */
   const handleChangeWidth = () => {
     width = window.innerWidth;
-    console.log("change columns");
     setColumns(width < 746 ? 1 : width < 1024 ? 2 : width >= 1024 ? 3 : 4);
   };
   const handleChangeWidthThrottle = throttle(handleChangeWidth);
@@ -53,10 +50,6 @@ function ImageList({ term }) {
    * Modal相关
    */
   const onOpenModal = (e) => {
-    console.log(
-      e.target.closest(".image-buttons-container").querySelector(".image")
-        .dataset
-    );
     const { imageId, imagePath, imageWidth, imageHeight, imageLikecount } =
       e.target
         .closest(".image-buttons-container")

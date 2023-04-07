@@ -22,7 +22,6 @@ function LoginForm() {
   const userData = useSelector((state) => state.userData);
 
   useEffect(() => {
-    console.log(fetchUserResults);
     if (fetchUserResults.isSuccess) {
       setMessage("Login success, enjoy!");
       dispatch(setUserData(fetchUserResults.data));

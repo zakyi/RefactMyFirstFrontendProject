@@ -28,7 +28,6 @@ function useHelperHook() {
   function debouce(callback, delay) {
     let timeout = null;
     return function (...args) {
-      console.log(args);
       timeout && clearTimeout(timeout);
       timeout = setTimeout(function () {
         callback(...args);
@@ -67,7 +66,6 @@ function useHelperHook() {
 
   const throttle = function (callback, delay = DEBOUNCE_DELAY) {
     let shouldWait = false;
-    console.log("test");
     let middleArgs;
     const middleFunc = () => {
       if (middleArgs != undefined) {

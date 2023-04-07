@@ -27,7 +27,6 @@ function SearchBar() {
   const [term, setTerm] = useState("");
   const [hints, setHints] = useState([]);
   const _input = useRef();
-  console.log("SearchBar Rerender");
   const { debouce } = useHelperHook();
 
   useEffect(() => {
@@ -38,17 +37,14 @@ function SearchBar() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(hints);
-  }, [hints.length]);
+  useEffect(() => {}, [hints.length]);
 
   const showHint = function (term) {
-    console.log(term);
     setHints(searchKeyWord.filter((keyword) => keyword.includes(term)));
     if (term === "") setHints([]);
   };
 
-  const laterShowHint = useCallback(debouce(showHint, DEBOUNCE_DELAY), []) ;
+  const laterShowHint = useCallback(debouce(showHint, DEBOUNCE_DELAY), []);
 
   const handleChange = (e) => {
     setTerm(e.target.value);
