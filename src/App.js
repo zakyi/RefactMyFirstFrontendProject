@@ -36,13 +36,13 @@ function App() {
   /**
    * 未登录时检查浏览器是否有token
    */
-  useEffect(() => {
-    const { token } = JSON.parse(localStorage.getItem("userData"));
-    if (!isLoggedIn && token !== null) {
-      console.log("Verify user");
-      verifyUser({ token });
-    }
-  }, [isLoggedIn]);
+  // useEffect(() => {
+  //   const { token } = JSON.parse(localStorage.getItem("userData"));
+  //   if (!isLoggedIn && token !== null) {
+  //     console.log("Verify user");
+  //     verifyUser({ token });
+  //   }
+  // }, [isLoggedIn]);
 
   useEffect(() => {
     if (verifyUserResults.isSuccess) {
