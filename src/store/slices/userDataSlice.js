@@ -27,6 +27,7 @@ const userDataSlice = createSlice({
       return state;
     },
     setLikesOrCollections(state, action) {
+      console.log(action.payload);
       const { type, imageId } = action.payload;
       if (type === "likes") {
         const likes = state.likes;

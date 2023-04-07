@@ -29,7 +29,7 @@ function useImageHook() {
       //     userNameData,
       //   })
       // );
-      console.log(userAction);
+      console.log("userAction success", userAction);
       setLikesOrCollections(userAction);
     } else if (sendUserActionResults.isError) {
       console.log(sendUserActionResults);
