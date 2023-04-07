@@ -40,7 +40,6 @@ function App() {
     const data = localStorage.getItem("userData");
     if (!data) return;
     const userData = JSON.parse(data);
-    console.log("userData", userData);
     if (!isLoggedIn && userData.token !== null) {
       console.log("Verify user");
       verifyUser({ token: userData.token });
@@ -56,7 +55,10 @@ function App() {
       //   collections: verifyUserResults.data.userData.collections.split(","),
       //   token: verifyUserResults.data.token,
       // };
-      // dispatch(setUserData(newUser));
+      const data = localStorage.getItem("userData");
+      if (!data) return;
+      const userData = JSON.parse(data);
+      dispatch(setUserData(userData));
       dispatch(setIsLoggedIn(true));
       dispatch(setCurrentPath("/"));
     }
