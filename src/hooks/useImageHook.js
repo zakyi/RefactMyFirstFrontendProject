@@ -30,7 +30,7 @@ function useImageHook() {
       //   })
       // );
       console.log("userAction success", userAction);
-      setLikesOrCollections(userAction);
+      dispatch(setLikesOrCollections(userAction));
     } else if (sendUserActionResults.isError) {
       console.log(sendUserActionResults);
     }
