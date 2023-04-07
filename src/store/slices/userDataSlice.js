@@ -21,7 +21,7 @@ const userDataSlice = createSlice({
       state.likes = [...userData.likes];
       state.collections = [...userData.collections];
       state.token = userData.token;
-      window.localStorage.setItem("userData", userData);
+      window.localStorage.setItem("userData", JSON.stringify(userData));
     },
     getUserData(state) {
       return state;
