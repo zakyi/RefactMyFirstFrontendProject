@@ -16,7 +16,7 @@ function ImageItem({
   type,
 }) {
   const { isLoggedIn } = useSelector((state) => state.userData);
-  const [isInView, setIsInview] = useState(false);
+  const [isInView, setIsInview] = useState(true);
   const imgRef = useRef();
   const { useIntersection } = useHelperHook();
 
@@ -28,9 +28,9 @@ function ImageItem({
     return collections.includes(image.id) ? "added" : "";
   };
 
-  useIntersection(imgRef, () => {
-    setIsInview(true);
-  });
+  // useIntersection(imgRef, () => {
+  //   setIsInview(true);
+  // });
 
   return (
     <div
