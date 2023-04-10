@@ -26,7 +26,6 @@ function RegisterForm() {
     } else if (addUserResults.isLoading) {
       setMessage("loading...");
     }
-    console.log(message);
   }, [addUserResults.status]);
 
   const handleUserNameChange = (e) => {

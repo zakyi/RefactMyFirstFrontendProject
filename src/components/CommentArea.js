@@ -41,7 +41,6 @@ function CommentArea({ imageId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.querySelector("input").value);
     if (e.target.querySelector("input").value.length >= 255) {
       setInvalidMessage("Content length must less than 255");
     } else {

@@ -41,7 +41,6 @@ function App() {
     if (!data) return;
     const userData = JSON.parse(data);
     if (!isLoggedIn && userData.token !== null) {
-      console.log("Verify user");
       verifyUser({ token: userData.token });
     }
   }, [isLoggedIn]);
