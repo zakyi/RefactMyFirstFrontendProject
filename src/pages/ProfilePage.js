@@ -2,6 +2,7 @@ import ImageList from "../components/ImageList";
 import Profile from "../components/Profile";
 import React from "react";
 import ClassDemo from "../components/user-info/ClassDemo";
+import UserInfo from "../components/user-info/UserInfo";
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class ProfilePage extends React.Component {
   render() {
     return (
       <>
-        <Profile />
+        <UserInfo />
         <ClassDemo></ClassDemo>
         <h1>{this.state.counter}</h1>
         <button onClick={this.incrementCounter}>+</button>

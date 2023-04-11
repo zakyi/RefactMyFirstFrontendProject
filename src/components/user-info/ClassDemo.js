@@ -10,6 +10,7 @@ class ClassDemo extends React.Component {
   }
 
   handleClick = () => {
+    console.log("back to main page");
     this.props.setCurrentPath("/");
   };
 
