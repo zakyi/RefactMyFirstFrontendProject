@@ -9,13 +9,13 @@ class ProfileList extends React.Component {
       <section class="profile-list-container">
         <ul class="profile-navbar">
           <li>
-            <Link>Likes</Link>
+            <Link label={"Likes"}></Link>
           </li>
           <li>
-            <Link>Collections</Link>
+            <Link label={"Collections"}></Link>
           </li>
           <li>
-            <Link>Uploads</Link>
+            <Link label={"Uploads"}></Link>
           </li>
         </ul>
       </section>
