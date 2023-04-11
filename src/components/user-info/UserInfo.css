@@ -1,7 +1,12 @@
+.user-info-container {
+  display: flex;
+  justify-content: center;
+}
+
 .user-info {
   display: grid;
-  grid-template-columns: 35% 1fr;
-  height: 250px;
+  grid-template-columns: 15% 1fr;
+  height: 100px;
   max-width: 935px;
 }
 
@@ -9,14 +14,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 100%;
+  font-size: 100px;
 }
 
 .info-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .info-container .inline-block {
@@ -24,7 +28,7 @@
 }
 
 .info-container * {
-  flex: 1;
+  flex-basis: 30px;
 }
 
 .like-collection-count-container {
@@ -33,5 +37,5 @@
 }
 
 .like-collection-count-container li {
-  flex-basis: 60px;
+  flex-basis: 100px;
 }

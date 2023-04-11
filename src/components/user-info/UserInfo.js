@@ -10,20 +10,22 @@ class UserInfo extends React.Component {
 
   render() {
     return (
-      <section class="user-info">
-        <div class="avatar-container">
-          <RxAvatar />
-        </div>
-        <div class="info-container">
-          <h3>{this.props.userData.userName}</h3>
-          <span class="inline-block">{this.props.userData.email}</span>
-          <ul class="like-collection-count-container">
-            <li>{this.props.userData.likes.length} likes</li>
-            <li>{this.props.userData.collections.length} adds</li>
-            <li>0 publishes</li>
-          </ul>
-        </div>
-      </section>
+      <div class="user-info-container">
+        <section class="user-info">
+          <div class="avatar-container">
+            <RxAvatar />
+          </div>
+          <div class="info-container">
+            <h3>{this.props.userData.userName}</h3>
+            <span class="inline-block">{this.props.userData.email}</span>
+            <ul class="like-collection-count-container">
+              <li>{this.props.userData.likes.length} likes</li>
+              <li>{this.props.userData.collections.length} adds</li>
+              <li>0 publishes</li>
+            </ul>
+          </div>
+        </section>
+      </div>
     );
   }
 }
