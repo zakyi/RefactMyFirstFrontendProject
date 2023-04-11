@@ -7,6 +7,7 @@ const pageSlice = createSlice({
   },
   reducers: {
     setCurrentPath(state, action) {
+      window.history.pushState({}, "", action.payload);
       state.currentPath = action.payload;
     },
   },

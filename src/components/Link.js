@@ -15,7 +15,6 @@ function Link({ label, path, classes }) {
     if (event.ctrlKey || event.metaKey) return;
     event.preventDefault();
 
-    window.history.pushState({}, "", path);
     dispatch(setCurrentPath(path));
   };
 

@@ -1,0 +1,33 @@
+.user-info {
+  display: grid;
+  grid-template-columns: 35% 1fr;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-cotainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.info-container .inline-block {
+  display: inline-block;
+}
+.info-container * {
+  flex: 1;
+}
+
+.like-collection-count-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.like-collection-count-container li {
+  flex-basis: 60px;
+}
