@@ -10,7 +10,7 @@ class UserInfo extends React.Component {
 
   render() {
     return (
-      <section id="user-info">
+      <section class="user-info">
         <div class="avatar-contianer">
           <RxAvatar></RxAvatar>
         </div>

@@ -1,6 +1,7 @@
 .user-info {
   display: grid;
   grid-template-columns: 35% 1fr;
+  height: 250px;
 }
 
 .avatar-container {
@@ -19,6 +20,7 @@
 .info-container .inline-block {
   display: inline-block;
 }
+
 .info-container * {
   flex: 1;
 }
