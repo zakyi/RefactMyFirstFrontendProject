@@ -6,7 +6,7 @@ import { setCurrentPath } from "../../store";
 class ClassDemo extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind.this();
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
