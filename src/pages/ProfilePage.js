@@ -6,12 +6,19 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { counter: 0 };
-    this.handleClick = this.handleClick.bind(this);
+    this.incrementCounter = this.incrementCounter.bind(this);
+    this.decrementCounter = this.decrementCounter.bind(this);
   }
 
-  handleClick(e) {
+  incrementCounter(e) {
     this.setState({
       counter: this.state.counter + 1,
+    });
+  }
+
+  decrementCounter(e) {
+    this.setState({
+      counter: this.state.counter - 1,
     });
   }
 
@@ -33,7 +40,9 @@ class ProfilePage extends React.Component {
     return (
       <>
         <Profile />
-        <button onClick={this.handleClick}>{this.state.counter}</button>
+        <h1>{this.state.counter}</h1>
+        <button onClick={this.incrementCounter}>+</button>
+        <button onClick={this.decrementCounter}>-</button>
       </>
     );
   }
