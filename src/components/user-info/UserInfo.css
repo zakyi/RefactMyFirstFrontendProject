@@ -12,7 +12,7 @@
   font-size: 100%;
 }
 
-.info-cotainer {
+.info-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

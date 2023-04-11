@@ -11,7 +11,7 @@ class UserInfo extends React.Component {
   render() {
     return (
       <section class="user-info">
-        <div class="avatar-contianer">
+        <div class="avatar-container">
           <RxAvatar />
         </div>
         <div class="info-container">
