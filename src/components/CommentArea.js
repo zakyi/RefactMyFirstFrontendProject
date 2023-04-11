@@ -48,6 +48,10 @@ function CommentArea({ imageId }) {
     }
     //获取时间
     const time = new Date().toString();
+    navigator.serviceWorker.controller.postMessage(
+      { userId: email, imageId, comment: commentText, token, time },
+      " has been sent to server"
+    );
     sendComment({ userId: email, imageId, comment: commentText, token, time });
   };
 

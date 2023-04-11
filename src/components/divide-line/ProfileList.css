@@ -1,10 +1,17 @@
 .profile-list-container {
-  border-top: var(--color-gray-4);
+  border-top: var(--color-gray-4) solid 1px;
 }
 
 .profile-navbar {
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.profile-navbar > * {
+  flex-basis: 80px;
+  display: flex;
   justify-content: center;
 }
