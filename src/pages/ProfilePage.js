@@ -1,8 +1,6 @@
-import ImageList from "../components/ImageList";
-import Profile from "../components/Profile";
 import React from "react";
-import ClassDemo from "../components/user-info/ClassDemo";
 import UserInfo from "../components/user-info/UserInfo";
+import ProfileList from "../components/divide-line/ProfileList";
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -42,8 +40,8 @@ class ProfilePage extends React.Component {
     return (
       <>
         <UserInfo />
+        <ProfileList />
         {/* <ClassDemo></ClassDemo> */}
-
         {/* <h1>{this.state.counter}</h1>
         <button onClick={this.incrementCounter}>+</button>
         <button onClick={this.decrementCounter}>-</button> */}

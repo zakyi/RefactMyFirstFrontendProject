@@ -1,4 +1,5 @@
 import React from "react";
+// import connect from "react-redux";
 import Link from "../Link";
 import "./ProfileList.css";
 
@@ -21,3 +22,9 @@ class ProfileList extends React.Component {
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {}
+// }
+
+export default ProfileList;
