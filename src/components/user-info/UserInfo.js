@@ -1,6 +1,7 @@
 import React from "react";
 import { RxAvatar } from "react-icons/rx";
 import { connect } from "react-redux";
+import "./UserInfo.css";
 
 class UserInfo extends React.Component {
   constructor(props) {
