@@ -2,12 +2,14 @@
   display: grid;
   grid-template-columns: 35% 1fr;
   height: 250px;
+  max-width: 935px;
 }
 
 .avatar-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 100%;
 }
 
 .info-cotainer {

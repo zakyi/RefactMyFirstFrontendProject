@@ -12,7 +12,7 @@ class UserInfo extends React.Component {
     return (
       <section class="user-info">
         <div class="avatar-contianer">
-          <RxAvatar></RxAvatar>
+          <RxAvatar />
         </div>
         <div class="info-container">
           <h3>{this.props.userData.userName}</h3>
