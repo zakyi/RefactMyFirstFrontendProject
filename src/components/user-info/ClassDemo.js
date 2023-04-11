@@ -9,15 +9,15 @@ class ClassDemo extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = () => {
+  handleClick() {
     console.log("back to main page");
     this.props.setCurrentPath("/");
-  };
+  }
 
   render() {
     return (
       <>
-        <button onClick={this.handleCLick}>Go back to main page</button>
+        <button onClick={this.handleClick}>Go back to main page</button>
       </>
     );
   }
