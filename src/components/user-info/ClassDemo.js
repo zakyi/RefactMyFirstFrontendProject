@@ -3,7 +3,7 @@ import { RxAvatar } from "react-icons/rx";
 import { connect } from "react-redux";
 import { setCurrentPath } from "../../store";
 
-class ClassDemo {
+class ClassDemo extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind.this();

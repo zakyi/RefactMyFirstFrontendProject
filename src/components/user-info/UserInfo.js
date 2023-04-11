@@ -2,7 +2,7 @@ import React from "react";
 import { RxAvatar } from "react-icons/rx";
 import { connect } from "react-redux";
 
-class UserInfo {
+class UserInfo extends React.Component {
   constructor(props) {
     super(props);
   }
