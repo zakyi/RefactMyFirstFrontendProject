@@ -1,12 +1,6 @@
-@media screen and (max-width: 935px) {
+@media screen and (max-width: 1024px) {
   .user-info {
     width: 100%;
-  }
-}
-
-@media screen and (min-width: 935px) {
-  .user-info {
-    width: 935px;
   }
 }
 
@@ -17,8 +11,9 @@
 
 .user-info {
   display: grid;
-  grid-template-columns: 15% 1fr;
+  grid-template-columns: 100px 1fr;
   height: 100px;
+  max-width: 1320px;
 }
 
 .avatar-container {
