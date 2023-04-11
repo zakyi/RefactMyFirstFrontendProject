@@ -42,10 +42,11 @@ class ProfilePage extends React.Component {
     return (
       <>
         <UserInfo />
-        <ClassDemo></ClassDemo>
-        <h1>{this.state.counter}</h1>
+        {/* <ClassDemo></ClassDemo> */}
+
+        {/* <h1>{this.state.counter}</h1>
         <button onClick={this.incrementCounter}>+</button>
-        <button onClick={this.decrementCounter}>-</button>
+        <button onClick={this.decrementCounter}>-</button> */}
       </>
     );
   }
