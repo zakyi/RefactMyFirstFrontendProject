@@ -17,7 +17,7 @@ class ClassDemo extends React.Component {
   render() {
     return (
       <>
-        <button onCLick={this.handleCLick}>Go back to main page</button>
+        <button onClick={this.handleCLick}>Go back to main page</button>
       </>
     );
   }
